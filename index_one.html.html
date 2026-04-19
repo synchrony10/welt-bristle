@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welt &amp; Bristle — Heritage Leatherwork</title>
+<meta name="description" content="Hand-stitched leather goods by a Reading-based maker. Wallets, footwear, and accessories made in the traditional manner." />
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+ 
+<style>
+/* ---------- Design Tokens ---------- */
+:root{
+  --bg:          #efe7d6;
+  --bg-paper:   #f6efdf;
+  --bg-deep:    #e8dfcb;
+  --ink:         #1f1711;
+  --ink-soft:   #4a3a2c;
+  --ink-mute:   #8a7660;
+  --rule:        #b9a784;
+  --accent:     #8b4a26;
+  --accent-deep:#5b2e18;
+  --oxblood:    #6b2a22;
+  --sage:        #556749;
+  --cream:       #faf4e4;
+ 
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:   'Newsreader', Georgia, serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, monospace;
+ 
+  --radius: 2px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --grain: .15;
+}
+ 
+body.theme-dusk{
+  --bg:#2a1e15; --bg-paper:#32241a; --bg-deep:#211610;
+  --ink:#f1e4cd; --ink-soft:#d9c9ac; --ink-mute:#a88e6c;
+  --rule:#5b4531; --accent:#d89767; --accent-deep:#b97343;
+  --oxblood:#b85646; --sage:#9ab08a; --cream:#f1e4cd;
+  --grain:.22;
+}
+body.theme-midnight{
+  --bg:#0f0c0a; --bg-paper:#15100c; --bg-deep:#0a0807;
+  --ink:#e9dcc1; --ink-soft:#c4b294; --ink-mute:#8a7558;
+  --rule:#3a2d20; --accent:#c8944e; --accent-deep:#a07536;
+  --oxblood:#a04638; --sage:#7a9065; --cream:#e9dcc1;
+  --grain:.28;
+}
+ 
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+html,body{
+  margin:0; padding:0;
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px; line-height:1.55;
+  font-variation-settings:"opsz" 16;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+ 
+/* Grain overlay */
+body::before{
+  content:""; position:fixed; inset:0;
+  pointer-events:none; z-index:100;
+  opacity:var(--grain);
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .15 0 0 0 0 .1 0 0 0 0 .05 0 0 0 .6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+body.theme-midnight::before, body.theme-dusk::before{ mix-blend-mode:overlay; }
+ 
+::selection{ background:var(--accent); color:var(--cream); }
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:var(--bg-deep); }
+::-webkit-scrollbar-thumb{ background:var(--rule); border-radius:10px; }
+ 
+img{ display:block; max-width:100%; }
+ 
+/* ---------- Header ---------- */
+header.site{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid var(--rule);
+}
+.header-inner{
+  max-width:1500px; margin:0 auto;
+  display:grid; grid-template-columns: auto 1fr auto auto;
+  align-items:center; gap:24px;
+  padding:16px 32px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none; color:var(--ink); cursor:pointer;
+}
+.brand-mark{
+  width:38px; height:38px; flex:none;
+  display:grid; place-items:center;
+  color:var(--accent-deep);
+}
+.brand-mark svg{ width:100%; height:100%; }
+.brand-text{ display:flex; flex-direction:column; line-height:1; }
+.brand-text .name{
+  font-family:var(--font-display);
+  font-variation-settings:"opsz" 144, "SOFT" 20;
+  font-weight:600; font-size:22px; letter-spacing:.01em;
+}
+.brand-text .tag{
+  font-family:var(--font-mono);
+  font-size:10px; color:var(--ink-mute);
+  letter-spacing:.18em; text-transform:uppercase; margin-top:4px;
+}
+ 
+.search-wrap{ position:relative; max-width:420px; justify-self:start; width:100%; }
+.search-wrap input{
+  width:100%; padding:10px 14px 10px 38px;
+  background:transparent; border:1px solid var(--rule);
+  border-radius:999px;
+  font-family:var(--font-body); font-size:14px; color:var(--ink);
+  outline:none; transition:border .2s var(--ease), background .2s var(--ease);
+}
+.search-wrap input:focus{ border-color:var(--accent); background:var(--bg-paper); }
+.search-wrap svg{ position:absolute; left:14px; top:50%; width:16px; height:16px; transform:translateY(-50%); color:var(--ink-mute); }
+.search-results{
+  position:absolute; top:calc(100% + 8px); left:0; right:0;
+  background:var(--bg-paper); border:1px solid var(--rule);
+  padding:8px; display:none;
+  max-height:380px; overflow-y:auto;
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.35);
+}
+.search-results.active{ display:block; }
+.search-result{ padding:12px 14px; cursor:pointer; border-bottom:1px dashed var(--rule); }
+.search-result:last-child{ border-bottom:0; }
+.search-result:hover{ background:var(--bg-deep); }
+.search-result .r-title{ font-family:var(--font-display); font-weight:500; font-size:16px; margin-bottom:2px; }
+.search-result .r-snippet{ font-size:13px; color:var(--ink-soft); line-height:1.4; }
+.search-result .r-kind{ font-family:var(--font-mono); font-size:10px; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; }
+.search-empty{ padding:18px; color:var(--ink-mute); font-style:italic; text-align:center; font-size:14px; }
+ 
+nav.main{ display:flex; gap:6px; }
+nav.main button{
+  background:none; border:0;
+  font-family:var(--font-body); font-size:14px;
+  color:var(--ink-soft); padding:8px 14px; cursor:pointer;
+  letter-spacing:.02em; position:relative;
+  transition: color .2s var(--ease);
+}
+nav.main button:hover{ color:var(--ink); }
+nav.main button.active{ color:var(--accent-deep); font-weight:500; }
+nav.main button.active::after{
+  content:""; position:absolute; bottom:2px; left:14px; right:14px;
+  height:1px; background:var(--accent);
+}
+ 
+.gear-btn{
+  width:40px; height:40px; display:grid; place-items:center;
+  background:none; border:1px solid var(--rule); border-radius:50%;
+  cursor:pointer; color:var(--ink-soft);
+  transition:transform .5s var(--ease), border-color .2s var(--ease);
+}
+.gear-btn:hover{ transform:rotate(60deg); border-color:var(--accent); color:var(--accent-deep); }
+.gear-btn svg{ width:18px; height:18px; }
+ 
+/* ---------- Main / pages ---------- */
+main{ max-width:1500px; margin:0 auto; padding:0 32px 120px; }
+.page{ display:none; animation: pageIn .6s var(--ease); }
+.page.active{ display:block; }
+@keyframes pageIn{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+ 
+/* ---------- Type ---------- */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px; color:var(--ink-mute);
+  letter-spacing:.25em; text-transform:uppercase;
+  display:flex; align-items:center; gap:12px; margin-bottom:24px;
+}
+.eyebrow::before{ content:""; display:inline-block; width:40px; height:1px; background:var(--accent); }
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:400; color:var(--ink);
+  letter-spacing:-.015em; margin:0;
+}
+h1{
+  font-size: clamp(48px, 7.5vw, 128px); line-height:.93;
+  font-variation-settings:"opsz" 144, "SOFT" 30;
+}
+h1 em{ font-style:italic; color:var(--accent-deep); font-variation-settings:"opsz" 144, "SOFT" 80; }
+h2{ font-size: clamp(32px, 4.5vw, 60px); line-height:1.05; font-variation-settings:"opsz" 72, "SOFT" 20; }
+h3{ font-size: clamp(20px, 2vw, 26px); line-height:1.2; font-variation-settings:"opsz" 36, "SOFT" 20; }
+p{ margin:0 0 1em; color:var(--ink-soft); font-size:17px; }
+p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--font-display); font-weight:300; line-height:1.45; font-variation-settings:"opsz" 36, "SOFT" 50; }
+ 
+/* ---------- Image primitives ---------- */
+.img-frame{
+  position:relative; overflow:hidden;
+  background:var(--bg-deep);
+  border:1px solid var(--rule);
+}
+.img-frame img{
+  width:100%; height:100%; object-fit:cover;
+  transition: transform 1.8s var(--ease), filter .5s var(--ease);
+}
+.img-frame:hover img{ transform:scale(1.04); }
+.img-caption{
+  position:absolute; bottom:16px; left:16px; right:16px;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  color:var(--cream);
+  font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.2em; text-transform:uppercase;
+  text-shadow: 0 1px 6px rgba(0,0,0,.6);
+  z-index:2; pointer-events:none;
+  opacity:0; transform:translateY(4px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.img-frame:hover .img-caption{ opacity:1; transform:translateY(0); }
+.img-frame::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 55%, rgba(20,12,6,.55));
+  opacity:0; transition: opacity .4s var(--ease);
+  pointer-events:none; z-index:1;
+}
+.img-frame:hover::after{ opacity:1; }
+ 
+/* Stitched border — decorative dashed inset */
+.stitched::before{
+  content:""; position:absolute; inset:10px;
+  border:1px dashed rgba(250,244,228,.55);
+  pointer-events:none; z-index:2;
+}
+ 
+/* ---------- HOME — Hero ---------- */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items:center;
+  padding: 60px 0 80px;
+  min-height: min(78vh, 800px);
+}
+.hero-text h1 .row{ display:block; }
+.hero-meta{
+  font-family:var(--font-mono);
+  font-size:11px; color:var(--ink-mute);
+  letter-spacing:.2em; text-transform:uppercase;
+  margin-top:32px;
+  display:flex; gap:20px; flex-wrap:wrap;
+}
+.hero-meta span{ position:relative; padding-left:14px; }
+.hero-meta span::before{ content:"§"; position:absolute; left:0; color:var(--accent); font-family:var(--font-display); font-style:italic; }
+ 
+.hero-visual{
+  aspect-ratio: 4/5;
+  position:relative;
+  animation: heroFloat 12s ease-in-out infinite;
+}
+@keyframes heroFloat{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+}
+.hero-visual .img-frame{ width:100%; height:100%; }
+.hero-badge{
+  position:absolute;
+  top:-20px; left:-20px;
+  width:110px; height:110px;
+  background:var(--cream);
+  border:1px solid var(--accent-deep);
+  border-radius:50%;
+  display:grid; place-items:center;
+  font-family:var(--font-display); font-style:italic;
+  font-size:13px; color:var(--accent-deep);
+  text-align:center; line-height:1.2;
+  transform:rotate(-8deg);
+  z-index:5;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,.25);
+  font-variation-settings:"opsz" 36, "SOFT" 80;
+}
+.hero-badge::before{
+  content:""; position:absolute; inset:6px;
+  border:1px dashed var(--accent-deep); border-radius:50%;
+}
+.hero-badge .bd-inner{ position:relative; z-index:2; padding: 0 10px; }
+ 
+/* ---------- Image strip between sections ---------- */
+.image-strip{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin: 40px 0 100px;
+}
+.image-strip .img-frame{ aspect-ratio: 3/4; }
+.image-strip .img-frame:nth-child(1){ aspect-ratio: 3/4; }
+.image-strip .img-frame:nth-child(3){ transform:translateY(-28px); }
+.image-strip .img-frame:nth-child(5){ transform:translateY(-14px); }
+ 
+/* ---------- Meta row ---------- */
+.home-meta-row{
+  display:grid; grid-template-columns: repeat(4, 1fr);
+  margin: 0 0 100px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.meta-cell{ padding:28px 20px; border-right:1px solid var(--rule); }
+.meta-cell:last-child{ border-right:0; }
+.meta-cell .num{
+  font-family:var(--font-display); font-weight:300; font-size:44px;
+  color:var(--accent-deep); font-style:italic; line-height:1;
+  font-variation-settings:"opsz" 144, "SOFT" 80;
+}
+.meta-cell .lbl{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.2em; text-transform:uppercase;
+  margin-top:8px;
+}
+ 
+/* ---------- Featured full-bleed section ---------- */
+.featured-full{
+  position:relative;
+  margin: 0 -32px 100px;
+  padding: 0;
+  overflow:hidden;
+  min-height: 620px;
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  background: var(--accent-deep);
+  color: var(--cream);
+}
+.featured-full .ff-image{
+  position:relative; min-height:620px;
+  overflow:hidden;
+}
+.featured-full .ff-image img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+}
+.featured-full .ff-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, transparent 50%, var(--accent-deep) 98%);
+}
+.featured-full .ff-body{
+  padding: 80px 60px;
+  display:flex; flex-direction:column; justify-content:center;
+  position:relative;
+}
+.featured-full .eyebrow{ color: rgba(250,244,228,.65); }
+.featured-full .eyebrow::before{ background: rgba(250,244,228,.7); }
+.featured-full h2{ color:var(--cream); max-width:14ch; }
+.featured-full p{
+  color: rgba(250,244,228,.82);
+  font-size:17px; max-width: 42ch; margin-top:20px;
+}
+.featured-full .specs{
+  margin-top:36px; padding-top:24px;
+  border-top: 1px solid rgba(250,244,228,.25);
+  display:grid; grid-template-columns: 1fr 1fr; gap:16px 24px;
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color: rgba(250,244,228,.7);
+}
+.featured-full .specs strong{
+  display:block; color:var(--cream);
+  font-family:var(--font-display); font-style:italic; font-weight:400;
+  font-size:16px; letter-spacing:normal; text-transform:none;
+  margin-top:4px;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+ 
+/* ---------- Home three-up ---------- */
+.home-three{
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-bottom: 100px;
+}
+.tile{ display:flex; flex-direction:column; cursor:pointer; }
+.tile .img-frame{ aspect-ratio: 4/5; margin-bottom:18px; }
+.tile h3{ margin-bottom:6px; }
+.tile .meta{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.2em; text-transform:uppercase;
+  margin-bottom:8px;
+}
+.tile p{ font-size:15px; line-height:1.5; }
+ 
+/* ---------- Ethos block ---------- */
+.ethos{
+  padding: 80px 0;
+  border-top:1px solid var(--rule);
+  display:grid; grid-template-columns: 1fr 2fr;
+  gap:60px; align-items:start;
+}
+.big-mark{
+  font-family:var(--font-display); font-style:italic; font-weight:300;
+  font-size: clamp(80px, 11vw, 180px);
+  color:var(--accent); line-height:.9;
+  font-variation-settings:"opsz" 144, "SOFT" 100;
+}
+ 
+/* ---------- Page header ---------- */
+.page-header{
+  padding: 80px 0 40px;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:60px;
+  display:grid; grid-template-columns: 2fr 1fr;
+  gap:40px; align-items:end;
+}
+.page-header .subtitle{
+  color:var(--ink-soft); font-size:18px;
+  max-width:55ch; margin-top:18px;
+}
+ 
+/* ---------- ATELIER ---------- */
+.atelier-hero{
+  position:relative;
+  margin: 0 -32px 80px;
+  height: 70vh; max-height: 720px;
+  overflow:hidden;
+}
+.atelier-hero img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+}
+.atelier-hero::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(20,12,6,.15) 0%, rgba(20,12,6,.7) 100%);
+}
+.atelier-hero .ah-content{
+  position:absolute; bottom:0; left:0; right:0;
+  padding: 48px;
+  color:var(--cream);
+}
+.atelier-hero .ah-content h1{ color:var(--cream); max-width:18ch; }
+.atelier-hero .ah-content h1 em{ color:#e9b989; }
+.atelier-hero .ah-content .eyebrow{ color: rgba(250,244,228,.75); }
+.atelier-hero .ah-content .eyebrow::before{ background: rgba(250,244,228,.8); }
+ 
+.atelier-body{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap:80px; margin-bottom:80px;
+}
+.atelier-text p{ font-size:18px; line-height:1.65; }
+.atelier-text p:first-child::first-letter{
+  font-family:var(--font-display); font-style:italic; float:left;
+  font-size:88px; line-height:.85;
+  padding:6px 14px 0 0;
+  color:var(--accent-deep); font-weight:300;
+  font-variation-settings:"opsz" 144, "SOFT" 80;
+}
+.atelier-visual{
+  display:grid; gap:24px;
+  position:sticky; top:100px;
+  align-self:start;
+}
+.atelier-visual .img-frame{ aspect-ratio: 3/4; }
+.atelier-visual .img-frame:nth-child(2){ aspect-ratio: 5/4; margin-left:40px; }
+ 
+.pull-quote{
+  margin: 80px 0;
+  padding: 60px 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  text-align:center;
+}
+.pull-quote p{
+  font-family:var(--font-display); font-weight:300; font-style:italic;
+  font-size: clamp(28px, 4.5vw, 52px); line-height:1.2;
+  color:var(--ink); max-width: 24ch; margin: 0 auto;
+  font-variation-settings:"opsz" 144, "SOFT" 90;
+}
+.pull-quote .cite{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.2em; text-transform:uppercase;
+  margin-top:24px;
+}
+.twin-pursuits{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap:60px; margin-top:60px;
+}
+.pursuit{ padding: 36px 0; border-top:2px solid var(--ink); }
+.pursuit h3{ margin-bottom:16px; }
+.pursuit ul{
+  list-style:none; padding:0; margin:18px 0 0;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.1em;
+}
+.pursuit li{
+  padding:10px 0; border-bottom:1px dashed var(--rule);
+  color:var(--ink-soft);
+  display:flex; justify-content:space-between; gap:12px;
+  text-transform:uppercase;
+}
+ 
+/* ---------- COLLECTION ---------- */
+.filter-bar{
+  display:flex; gap:8px; flex-wrap:wrap;
+  margin-bottom:40px; padding-bottom:20px;
+  border-bottom:1px solid var(--rule);
+}
+.filter-bar button{
+  background:transparent; border:1px solid var(--rule);
+  border-radius:999px; padding:8px 16px;
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.15em; text-transform:uppercase;
+  cursor:pointer; color:var(--ink-soft);
+  transition: all .2s var(--ease);
+}
+.filter-bar button:hover{ border-color:var(--accent); color:var(--ink); }
+.filter-bar button.active{
+  background:var(--ink); color:var(--cream); border-color:var(--ink);
+}
+ 
+.collection-grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 28px;
+}
+.piece{
+  display:flex; flex-direction:column;
+  cursor:pointer;
+  grid-column: span 4;
+}
+.piece .img-frame{ aspect-ratio: 4/5; margin-bottom:18px; }
+/* asymmetric sizes for editorial feel */
+.piece.size-l{ grid-column: span 6; }
+.piece.size-l .img-frame{ aspect-ratio: 5/4; }
+.piece.size-m{ grid-column: span 4; }
+.piece.size-m .img-frame{ aspect-ratio: 4/5; }
+.piece.size-s{ grid-column: span 3; }
+.piece.size-s .img-frame{ aspect-ratio: 3/4; }
+.piece-title{
+  font-family:var(--font-display); font-weight:400;
+  font-size:22px; color:var(--ink);
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.piece-meta{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.15em; text-transform:uppercase;
+  margin-top:6px; display:flex; gap:14px;
+}
+.piece-meta .accent{ color:var(--accent); }
+ 
+/* ---------- JOURNAL ---------- */
+.journal-layout{ display:grid; gap:0; }
+.article{
+  display:grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap:60px;
+  padding: 60px 0;
+  border-bottom:1px solid var(--rule);
+  align-items:center;
+  cursor:pointer;
+}
+.article:first-child{ border-top:1px solid var(--rule); }
+.article:nth-child(even){ direction:rtl; }
+.article:nth-child(even) > *{ direction:ltr; }
+.article .art-image{
+  aspect-ratio: 5/4;
+  position:relative;
+  transition: transform .5s var(--ease);
+}
+.article:hover .art-image{ transform:scale(.99); }
+.article .art-image .img-frame{ width:100%; height:100%; }
+.article-meta-top{
+  display:flex; gap:20px; align-items:center;
+  margin-bottom:18px;
+}
+.article .art-no{
+  font-family:var(--font-display); font-style:italic;
+  font-size:18px; color:var(--accent);
+  font-variation-settings:"opsz" 72, "SOFT" 80;
+}
+.article .art-date{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.18em; text-transform:uppercase;
+}
+.article .art-title{
+  font-family:var(--font-display); font-weight:500;
+  font-size:clamp(26px, 3vw, 40px); line-height:1.15;
+  color:var(--ink); margin-bottom:16px;
+  font-variation-settings:"opsz" 72, "SOFT" 30;
+}
+.article:hover .art-title{ color:var(--accent-deep); }
+.article .art-excerpt{
+  color:var(--ink-soft); font-size:17px; line-height:1.6;
+  max-width: 48ch;
+}
+.article .art-tags{
+  font-family:var(--font-mono); font-size:10px;
+  color:var(--accent); letter-spacing:.2em; text-transform:uppercase;
+  margin-top:20px;
+}
+.art-readmore{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:24px;
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:var(--accent-deep);
+}
+.art-readmore svg{ width:16px; height:16px; transition:transform .3s var(--ease); }
+.article:hover .art-readmore svg{ transform:translateX(6px); }
+ 
+.article-full-view{
+  display:none; padding: 40px 0;
+  animation: pageIn .5s var(--ease);
+}
+.article-full-view.active{ display:block; }
+.back-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:none; border:0;
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent-deep); cursor:pointer; padding:0; margin-bottom:32px;
+}
+.back-btn:hover{ color:var(--accent); }
+.afv-hero{
+  aspect-ratio: 16/8;
+  margin-bottom: 60px;
+  position:relative; overflow:hidden;
+}
+.afv-hero .img-frame{ width:100%; height:100%; }
+.article-full-view article{ max-width: 68ch; margin: 0 auto; }
+.article-full-view h1{ font-size: clamp(36px, 5vw, 72px); margin-bottom:24px; }
+.article-full-view .article-meta{
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-mute); margin-bottom:48px;
+  padding-bottom:24px; border-bottom:1px solid var(--rule);
+  display:flex; gap:20px; flex-wrap:wrap;
+}
+.article-full-view .article-body p{
+  font-size:19px; line-height:1.75;
+  color:var(--ink); font-family:var(--font-display); font-weight:300;
+  font-variation-settings:"opsz" 24, "SOFT" 10;
+  margin-bottom:1.2em;
+}
+.article-full-view .article-body p:first-child::first-letter{
+  font-size:84px; float:left; line-height:.85;
+  padding:4px 14px 0 0;
+  color:var(--accent-deep); font-style:italic;
+}
+ 
+/* ---------- CRAFT ---------- */
+.craft-hero{
+  position:relative;
+  margin: 0 -32px 80px;
+  height: 50vh; max-height: 520px;
+  overflow:hidden;
+}
+.craft-hero img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+.craft-hero::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(20,12,6,.1) 0%, rgba(20,12,6,.6) 100%);
+}
+.craft-hero .ch-content{
+  position:absolute; inset:0;
+  display:flex; align-items:center;
+  padding: 0 48px;
+  color:var(--cream);
+}
+.craft-hero h1{ color:var(--cream); max-width:14ch; }
+.craft-hero h1 em{ color:#e9b989; }
+.craft-hero .eyebrow{ color:rgba(250,244,228,.75); }
+.craft-hero .eyebrow::before{ background:rgba(250,244,228,.8); }
+ 
+.craft-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border-top:1px solid var(--rule);
+  margin-bottom:100px;
+}
+.service{
+  padding: 40px 32px 40px 0;
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.service:last-child{ border-right:0; }
+.service .s-no{
+  font-family:var(--font-display); font-style:italic;
+  font-size:72px; color:var(--accent); line-height:1;
+  font-variation-settings:"opsz" 144, "SOFT" 80; font-weight:300;
+}
+.service h3{ margin: 20px 0 12px; font-size:26px; }
+.service p{ font-size:15px; }
+.service .price{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.2em; text-transform:uppercase;
+  margin-top:20px; padding-top:14px;
+  border-top:1px dashed var(--rule);
+}
+ 
+.process{ margin-bottom:80px; }
+.process-steps{
+  display:grid; grid-template-columns: repeat(4, 1fr);
+  gap:30px; margin-top:40px; counter-reset: step;
+}
+.step{
+  padding-top:30px; border-top:2px solid var(--ink);
+  counter-increment: step;
+}
+.step::before{
+  content: "0" counter(step);
+  display:block;
+  font-family:var(--font-mono); font-size:12px;
+  letter-spacing:.2em; color:var(--accent-deep); margin-bottom:14px;
+}
+.step h3{ font-size:20px; margin-bottom:10px; }
+.step p{ font-size:14px; color:var(--ink-soft); }
+ 
+/* ---------- CONTACT ---------- */
+.contact-layout{
+  display:grid; grid-template-columns: 1.3fr 1fr;
+  gap:80px; margin-bottom:80px;
+}
+.contact-info dl{ margin:0; border-top:1px solid var(--rule); }
+.contact-info div{
+  display:grid; grid-template-columns: 140px 1fr;
+  padding: 20px 0; border-bottom:1px solid var(--rule); gap:20px;
+}
+.contact-info dt{
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-mute); padding-top:4px;
+}
+.contact-info dd{
+  margin:0;
+  font-family:var(--font-display); font-size:18px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 24, "SOFT" 20;
+}
+.contact-info dd a{
+  color:var(--accent-deep);
+  text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px;
+}
+.contact-visual{
+  aspect-ratio: 3/4; margin-bottom:24px;
+}
+ 
+.contact-form{
+  background:var(--bg-paper);
+  border:1px solid var(--rule);
+  padding:36px;
+}
+.contact-form label{
+  display:block;
+  font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-mute); margin-bottom:6px; margin-top:18px;
+}
+.contact-form label:first-child{ margin-top:0; }
+.contact-form input, .contact-form textarea, .contact-form select{
+  width:100%; padding:10px 14px;
+  background:var(--bg); border:1px solid var(--rule);
+  font-family:var(--font-body); font-size:15px;
+  color:var(--ink); outline:none;
+}
+.contact-form input:focus, .contact-form textarea:focus{ border-color:var(--accent); }
+.contact-form textarea{ min-height:120px; resize:vertical; font-family:var(--font-body); }
+.contact-form button{
+  margin-top:28px; width:100%; padding:14px;
+  background:var(--ink); color:var(--cream); border:0;
+  font-family:var(--font-mono); font-size:12px;
+  letter-spacing:.25em; text-transform:uppercase; cursor:pointer;
+  transition: background .3s var(--ease);
+}
+.contact-form button:hover{ background:var(--accent-deep); }
+ 
+/* ---------- Footer ---------- */
+footer.site{
+  border-top:1px solid var(--rule);
+  padding: 40px 32px;
+  max-width:1500px; margin: 0 auto;
+  display:grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap:40px; align-items:start;
+}
+footer .foot-brand .name{
+  font-family:var(--font-display); font-size:26px;
+  font-variation-settings:"opsz" 72, "SOFT" 30;
+}
+footer .foot-brand p{ font-size:14px; color:var(--ink-mute); max-width:38ch; margin-top:8px; }
+footer h4{
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-mute); margin:0 0 16px; font-weight:500;
+}
+footer ul{ list-style:none; padding:0; margin:0; font-size:14px; }
+footer ul li{ margin-bottom:8px; }
+footer ul button, footer ul a{
+  background:none; border:0; padding:0;
+  font: inherit; color:var(--ink-soft); cursor:pointer;
+  text-align:left; text-decoration:none;
+}
+footer ul button:hover, footer ul a:hover{ color:var(--accent-deep); }
+.foot-copy{
+  grid-column: 1 / -1;
+  border-top:1px dashed var(--rule);
+  padding-top:24px;
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.15em;
+  color:var(--ink-mute);
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  text-transform:uppercase; margin-top:20px;
+}
+ 
+/* ---------- Settings Panel ---------- */
+.settings-panel{
+  position:fixed; top:0; right:0; bottom:0;
+  width:380px; max-width:90vw;
+  background:var(--bg-paper);
+  border-left:1px solid var(--rule);
+  box-shadow: -40px 0 80px -20px rgba(0,0,0,.3);
+  transform:translateX(100%);
+  transition: transform .5s var(--ease);
+  z-index:200; overflow-y:auto; padding:32px;
+}
+.settings-panel.open{ transform:translateX(0); }
+.settings-header{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:32px; padding-bottom:20px;
+  border-bottom:1px solid var(--rule);
+}
+.settings-header h3{
+  font-family:var(--font-display); font-size:24px;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.settings-close{
+  background:none; border:0; cursor:pointer;
+  width:36px; height:36px;
+  display:grid; place-items:center;
+  color:var(--ink-soft); border-radius:50%;
+}
+.settings-close:hover{ background:var(--bg-deep); color:var(--ink); }
+ 
+.settings-group{ margin-bottom:28px; }
+.settings-group h4{
+  font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:var(--ink-mute); margin: 0 0 12px; font-weight:500;
+}
+.option-group{ display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; }
+.option-btn{
+  padding:12px 10px;
+  background:var(--bg);
+  border:1px solid var(--rule);
+  cursor:pointer;
+  font-family:var(--font-body); font-size:13px;
+  color:var(--ink-soft);
+  transition: all .2s var(--ease);
+  text-align:center;
+}
+.option-btn:hover{ border-color:var(--accent); color:var(--ink); }
+.option-btn.active{ background:var(--ink); color:var(--cream); border-color:var(--ink); }
+.option-btn .swatch{
+  display:block; width:100%; height:28px;
+  margin-bottom:6px; border:1px solid rgba(0,0,0,.1);
+}
+.swatch.sw-day{ background:linear-gradient(135deg,#efe7d6,#8b4a26); }
+.swatch.sw-dusk{ background:linear-gradient(135deg,#2a1e15,#d89767); }
+.swatch.sw-midnight{ background:linear-gradient(135deg,#0f0c0a,#c8944e); }
+ 
+/* Layout variants */
+body.layout-minimal main{ max-width:860px; }
+body.layout-minimal .hero{ grid-template-columns: 1fr; gap:40px; min-height:auto; padding:40px 0; }
+body.layout-minimal .image-strip{ grid-template-columns: 1fr 1fr; gap:20px; }
+body.layout-minimal .image-strip .img-frame:nth-child(n){ transform:none; }
+body.layout-minimal .image-strip .img-frame:nth-child(n+3){ display:none; }
+body.layout-minimal .home-three{ grid-template-columns: 1fr; gap:60px; }
+body.layout-minimal .collection-grid .piece{ grid-column: span 12 !important; }
+body.layout-minimal .collection-grid .piece .img-frame{ aspect-ratio: 16/10 !important; }
+body.layout-minimal .atelier-body{ grid-template-columns: 1fr; }
+body.layout-minimal .contact-layout{ grid-template-columns: 1fr; }
+body.layout-minimal .craft-grid{ grid-template-columns: 1fr; }
+body.layout-minimal .service{ border-right:0; padding-right:0; }
+body.layout-minimal .twin-pursuits{ grid-template-columns: 1fr; }
+body.layout-minimal .process-steps{ grid-template-columns: 1fr 1fr; }
+body.layout-minimal .home-meta-row{ grid-template-columns: 1fr 1fr; }
+body.layout-minimal .meta-cell:nth-child(2n){ border-right:0; }
+body.layout-minimal .featured-full{ grid-template-columns: 1fr; }
+body.layout-minimal .featured-full .ff-image::after{ display:none; }
+body.layout-minimal .article{ grid-template-columns: 1fr; gap:24px; }
+ 
+body.layout-gallery main{ max-width:1700px; }
+body.layout-gallery .collection-grid{ grid-template-columns: repeat(12, 1fr); }
+body.layout-gallery .piece{ grid-column: span 3 !important; }
+body.layout-gallery .piece .img-frame{ aspect-ratio: 3/4 !important; }
+body.layout-gallery .home-three{ grid-template-columns: repeat(4, 1fr); }
+body.layout-gallery .image-strip{ grid-template-columns: repeat(6, 1fr); }
+ 
+/* Typography variants */
+body.type-sans{
+  --font-display: 'Newsreader', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em; font-weight:600; }
+ 
+/* Responsive */
+@media (max-width: 1000px){
+  .featured-full{ grid-template-columns: 1fr; }
+  .featured-full .ff-image{ min-height: 360px; }
+  .featured-full .ff-image::after{ background: linear-gradient(180deg, transparent 50%, var(--accent-deep) 98%); }
+  .featured-full .ff-body{ padding: 48px 32px; }
+}
+@media (max-width: 900px){
+  .header-inner{ grid-template-columns: 1fr auto auto; row-gap:12px; }
+  .search-wrap{ grid-column: 1 / -1; order:3; max-width:none; }
+  nav.main{ display:none; }
+  .hero{ grid-template-columns:1fr; gap:30px; padding:40px 0; min-height:auto; }
+  .hero-visual{ aspect-ratio: 1/1; }
+  .image-strip{ grid-template-columns: 1fr 1fr; gap:14px; }
+  .image-strip .img-frame:nth-child(n){ transform:none; }
+  .image-strip .img-frame:nth-child(n+5){ display:none; }
+  .home-three, .atelier-body, .twin-pursuits, .process-steps,
+  .contact-layout, .craft-grid, .home-meta-row{ grid-template-columns: 1fr !important; }
+  .collection-grid .piece{ grid-column: span 12 !important; }
+  .collection-grid .piece .img-frame{ aspect-ratio: 5/4 !important; }
+  .meta-cell{ border-right:0; border-bottom:1px solid var(--rule); }
+  .meta-cell:last-child{ border-bottom:0; }
+  .service{ border-right:0; padding-right:0; }
+  .article{ grid-template-columns: 1fr; gap:20px; }
+  .article:nth-child(even){ direction:ltr; }
+  .atelier-hero, .craft-hero{ height: 50vh; }
+  .atelier-hero .ah-content, .craft-hero .ch-content{ padding: 32px 20px; }
+  main{ padding: 0 20px 80px; }
+  .header-inner{ padding: 12px 20px; }
+  footer.site{ grid-template-columns:1fr 1fr; padding:32px 20px; }
+  .atelier-visual{ position:static; }
+  .atelier-visual .img-frame:nth-child(2){ margin-left:0; }
+  .atelier-hero, .craft-hero, .featured-full{ margin-left:-20px; margin-right:-20px; }
+}
+</style>
+</head>
+<body class="theme-day layout-editorial type-serif">
+ 
+<!-- =================== HEADER =================== -->
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" onclick="navigate('home')">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="28.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M30 10 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M26 40 L34 40 L33 48 L27 48 Z" fill="currentColor"/>
+          <path d="M20 20 Q30 26 40 20" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
+          <path d="M22 24 Q30 30 38 24" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="name">Welt &amp; Bristle</span>
+        <span class="tag">Hand-stitched · Reading</span>
+      </span>
+    </a>
+ 
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search articles, pieces, techniques…" autocomplete="off"/>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+ 
+    <nav class="main" id="mainNav">
+      <button onclick="navigate('home')" data-page="home" class="active">Home</button>
+      <button onclick="navigate('atelier')" data-page="atelier">Atelier</button>
+      <button onclick="navigate('collection')" data-page="collection">Collection</button>
+      <button onclick="navigate('journal')" data-page="journal">Journal</button>
+      <button onclick="navigate('craft')" data-page="craft">Craft</button>
+      <button onclick="navigate('contact')" data-page="contact">Contact</button>
+    </nav>
+ 
+    <button class="gear-btn" onclick="toggleSettings()" aria-label="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+ 
+<main>
+ 
+<!-- =================== HOME =================== -->
+<section class="page active" id="page-home">
+ 
+  <div class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Est. 2024 · Reading, Berkshire</div>
+      <h1>
+        <span class="row">Slow</span>
+        <span class="row">stitched,</span>
+        <span class="row"><em>by hand.</em></span>
+      </h1>
+      <p class="lede" style="margin-top:32px; max-width:42ch;">
+        A small atelier for traditional leatherwork — wallets, shoes and harness goods made with waxed linen, boar bristle and a scholar's patience.
+      </p>
+      <div class="hero-meta">
+        <span>Oak-tanned hides</span>
+        <span>Saddle stitch only</span>
+        <span>Handmade wax</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">
+        <span class="bd-inner">Made<br/>by hand<br/>in Reading</span>
+      </div>
+      <div class="img-frame stitched">
+        <img src="images/wallet-palestine.jpg" alt="Hand-stitched tan leather wallet with an inlaid Palestinian flag panel" loading="eager"/>
+        <div class="img-caption">
+          <span>Card wallet · inlay</span>
+          <span>Nº 012</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Image strip — workshop overview -->
+  <div class="image-strip">
+    <div class="img-frame">
+      <img src="images/stitching-hands.jpg" alt="Hands pulling waxed linen thread through leather with a harness needle" loading="lazy"/>
+      <div class="img-caption"><span>At the bench</span><span>—</span></div>
+    </div>
+    <div class="img-frame">
+      <img src="images/wallet-closed.jpg" alt="A folded two-tone brown leather bifold wallet held in hand" loading="lazy"/>
+      <div class="img-caption"><span>Berkshire bifold</span><span>—</span></div>
+    </div>
+    <div class="img-frame">
+      <img src="images/shoe-stitching.jpg" alt="Close-up of needle and waxed thread entering a welted shoe" loading="lazy"/>
+      <div class="img-caption"><span>Welt repair</span><span>—</span></div>
+    </div>
+    <div class="img-frame">
+      <img src="images/wallet-interior.jpg" alt="Open interior of a hand-stitched leather wallet showing card slots" loading="lazy"/>
+      <div class="img-caption"><span>Interior, lined</span><span>—</span></div>
+    </div>
+    <div class="img-frame">
+      <img src="images/birkenstocks.jpg" alt="A pair of Birkenstock sandals with restored leather straps and buckles" loading="lazy"/>
+      <div class="img-caption"><span>Strap refurb</span><span>—</span></div>
+    </div>
+  </div>
+ 
+  <div class="home-meta-row">
+    <div class="meta-cell"><div class="num">14</div><div class="lbl">Pieces in rotation</div></div>
+    <div class="meta-cell"><div class="num">8 spi</div><div class="lbl">Stitch density</div></div>
+    <div class="meta-cell"><div class="num">∞</div><div class="lbl">Repair guarantee</div></div>
+    <div class="meta-cell"><div class="num">03</div><div class="lbl">Commissions open</div></div>
+  </div>
+ 
+  <!-- Featured full-bleed -->
+  <div class="featured-full">
+    <div class="ff-image">
+      <img src="images/wallet-cash.jpg" alt="Open hand-stitched wallet with cards and a Bank of England twenty-pound note"/>
+    </div>
+    <div class="ff-body">
+      <div class="eyebrow">Now in the workshop</div>
+      <h2>The Reading Billfold</h2>
+      <p>Six card slots, a full-height note pocket, and a single-piece inner lining — stitched with hand-waxed linen thread at eight stitches per inch. Intended to go soft in the hand without ever losing its shape.</p>
+      <div class="specs">
+        <div>Leather<strong>Oak-bark tan</strong></div>
+        <div>Stitch<strong>Saddle, 8 spi</strong></div>
+        <div>Thread<strong>Linen, hand-waxed</strong></div>
+        <div>Edges<strong>Burnished, no paint</strong></div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Home three-up -->
+  <div class="eyebrow">On the bench this season</div>
+  <div class="home-three">
+    <div class="tile" onclick="navigate('collection')">
+      <div class="img-frame stitched">
+        <img src="images/wallet-open.jpg" alt="Fully opened bifold wallet showing symmetrical card slots and a centre pocket" loading="lazy"/>
+        <div class="img-caption"><span>Nº 017</span><span>wallet</span></div>
+      </div>
+      <div class="meta">Nº 017 · Bifold</div>
+      <h3>The Berkshire Bifold</h3>
+      <p>Six card slots, lined interior, dovetailed seams.</p>
+    </div>
+    <div class="tile" onclick="navigate('collection')">
+      <div class="img-frame stitched">
+        <img src="images/shoes-pair.jpg" alt="A pair of brown pebble-grain Oxford shoes viewed from the toes" loading="lazy"/>
+        <div class="img-caption"><span>Nº 042</span><span>repair</span></div>
+      </div>
+      <div class="meta">Repair · Nº 042</div>
+      <h3>Welted oxfords, saved</h3>
+      <p>Welt thread replaced, old sole reused, finish rebuilt by hand.</p>
+    </div>
+    <div class="tile" onclick="navigate('journal')">
+      <div class="img-frame stitched">
+        <img src="images/stitching-hands.jpg" alt="Close-up of a hand pulling a long waxed thread through stitched leather" loading="lazy"/>
+        <div class="img-caption"><span>Note Nº 001</span><span>journal</span></div>
+      </div>
+      <div class="meta">From the journal</div>
+      <h3>Sewing with boar bristles</h3>
+      <p>Why split-bristle sewing still produces the finest hand-stitched seam.</p>
+    </div>
+  </div>
+ 
+  <!-- Ethos -->
+  <div class="ethos">
+    <div class="big-mark">&para;</div>
+    <div>
+      <div class="eyebrow">Ethos</div>
+      <p class="lede">
+        Every item made here is designed to outlive its first owner. Nothing is glued that could be stitched, nothing is stitched that could not one day be repaired. The materials are traceable — vegetable-tanned hides from European tanneries that still use oak bark, linen thread waxed by hand with pine tar and tallow.
+      </p>
+      <p style="margin-top:20px;">
+        The same principles that guide the academic study of sustainable agriculture guide the workbench: slow inputs, closed loops, and a respect for the long arc of things.
+      </p>
+    </div>
+  </div>
+ 
+</section>
+ 
+<!-- =================== ATELIER =================== -->
+<section class="page" id="page-atelier">
+ 
+  <div class="atelier-hero">
+    <img src="images/stitching-hands.jpg" alt="Hands working the stitch line on a piece of leather"/>
+    <div class="ah-content">
+      <div class="eyebrow">The atelier</div>
+      <h1>A scholar's <em>bench.</em></h1>
+    </div>
+  </div>
+ 
+  <p class="lede" style="max-width:68ch; margin-bottom:60px;">
+    Between lectures on the economics of climate change, I sit at a stitching pony in a small workshop in Reading and make things the old way. The two pursuits are closer than they look.
+  </p>
+ 
+  <div class="atelier-body">
+    <div class="atelier-text">
+      <p>The bench is set up in the corner of a study otherwise occupied by papers on agricultural policy and climate finance. It holds a French stitching clam, a half-round knife, three awls of decreasing diameter, and a pot of hand-made pine tar wax. The tools are not accidental: each one was made for a purpose and has remained useful, unchanged, for several centuries.</p>
+ 
+      <p>Leatherwork came into the study quietly. An old pair of welted shoes needed resoling and no one nearby would do it without gluing the sole on. The only way to have them repaired properly, it turned out, was to learn how. One repair led to another, and in time the benches for research and for craft became the same bench.</p>
+ 
+      <p>What began as a practical exercise has become something closer to a long-running argument — with the disposable, with the glued, with the opaque supply chain. The academic literature on durability, repair culture and the true cost of fast goods turns out to map almost exactly onto a workbench: a saddle-stitched seam will not come undone when one thread breaks; a pegged heel can be rebuilt without destroying the upper.</p>
+ 
+      <p>Every piece that leaves the workshop is made on the assumption that it will be repaired, perhaps more than once, and that the person who makes the next repair may not be me. Everything is designed to be taken apart.</p>
+    </div>
+ 
+    <div class="atelier-visual">
+      <div class="img-frame stitched">
+        <img src="images/shoe-stitching.jpg" alt="Thread and needle against the side of a shoe at the welt seam" loading="lazy"/>
+        <div class="img-caption"><span>Welt thread</span><span>in progress</span></div>
+      </div>
+      <div class="img-frame stitched">
+        <img src="images/wallet-interior.jpg" alt="Hand-stitched interior of a leather wallet" loading="lazy"/>
+        <div class="img-caption"><span>Wallet interior</span><span>hand-lined</span></div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="pull-quote">
+    <p>"Once you have the bristles right, it's a doddle."</p>
+    <div class="cite">— From a note on boar-bristle sewing</div>
+  </div>
+ 
+  <div class="eyebrow">Twin pursuits</div>
+  <div class="twin-pursuits">
+    <div class="pursuit">
+      <h3>By day · University of Reading</h3>
+      <p>Research and teaching across climate science, agricultural policy and the economics of climate change. The work asks how incentives, rules and land-use decisions interact with the living systems beneath them.</p>
+      <ul>
+        <li><span>Climate economics</span><span>—</span></li>
+        <li><span>Sustainable agriculture</span><span>—</span></li>
+        <li><span>Land-use &amp; policy</span><span>—</span></li>
+      </ul>
+    </div>
+    <div class="pursuit">
+      <h3>By evening · Welt &amp; Bristle</h3>
+      <p>A private workshop making saddle-stitched leather goods and repairing welted footwear in the traditional manner. No machine stitching, no synthetic threads, no glue where a stitch will do.</p>
+      <ul>
+        <li><span>Saddle stitch</span><span>8 spi</span></li>
+        <li><span>Hand-waxed linen</span><span>pine tar + tallow</span></li>
+        <li><span>Welted repair</span><span>reuse where possible</span></li>
+      </ul>
+    </div>
+  </div>
+ 
+</section>
+ 
+<!-- =================== COLLECTION =================== -->
+<section class="page" id="page-collection">
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">The collection</div>
+      <h1>Pieces from <em>the bench.</em></h1>
+    </div>
+    <div>
+      <p class="subtitle">A small rotating catalogue of finished work. Each piece is one-of-a-kind; many can be commissioned again in a variant of your choosing.</p>
+    </div>
+  </div>
+ 
+  <div class="filter-bar" id="filterBar">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="wallet">Wallets &amp; Billfolds</button>
+    <button data-filter="footwear">Footwear &amp; Repair</button>
+    <button data-filter="accessory">Accessories</button>
+  </div>
+ 
+  <div class="collection-grid" id="collectionGrid">
+    <!-- pieces injected by JS -->
+  </div>
+</section>
+ 
+<!-- =================== JOURNAL =================== -->
+<section class="page" id="page-journal">
+ 
+  <div class="page-header" id="journalHeader">
+    <div>
+      <div class="eyebrow">The journal</div>
+      <h1>Field <em>notes.</em></h1>
+    </div>
+    <div>
+      <p class="subtitle">Occasional writing on technique, repair and the slow economics of making things that last. Search the archive above.</p>
+    </div>
+  </div>
+ 
+  <div id="journalList" class="journal-layout">
+    <!-- articles injected by JS -->
+  </div>
+ 
+  <div id="articleFullView" class="article-full-view">
+    <button class="back-btn" onclick="closeArticle()">← Return to the archive</button>
+    <div class="afv-hero" id="afvHero">
+      <div class="img-frame stitched">
+        <img id="afvImg" src="" alt=""/>
+      </div>
+    </div>
+    <article>
+      <h1 id="afvTitle"></h1>
+      <div class="article-meta" id="afvMeta"></div>
+      <div class="article-body" id="afvBody"></div>
+    </article>
+  </div>
+</section>
+ 
+<!-- =================== CRAFT =================== -->
+<section class="page" id="page-craft">
+ 
+  <div class="craft-hero">
+    <img src="images/shoes-pair.jpg" alt="A finished pair of polished brown Oxford shoes"/>
+    <div class="ch-content">
+      <div>
+        <div class="eyebrow">Craft</div>
+        <h1>Commissions &amp; <em>repair.</em></h1>
+      </div>
+    </div>
+  </div>
+ 
+  <p class="lede" style="max-width:62ch; margin-bottom:60px;">
+    A short list of services, each accepted in small batches. Most commissions take four to eight weeks from first conversation to despatch.
+  </p>
+ 
+  <div class="craft-grid">
+    <div class="service">
+      <div class="s-no">I.</div>
+      <h3>Welted footwear repair</h3>
+      <p>Resoling, heel rebuilds and welt-thread replacement for Goodyear- and hand-welted shoes. Old welts are reused where sound. Finishing is done the long way with dye, wax and polish.</p>
+      <div class="price">From £95 · 3–4 weeks</div>
+    </div>
+    <div class="service">
+      <div class="s-no">II.</div>
+      <h3>Bespoke small goods</h3>
+      <p>Bifolds, card wallets, belts and simple bags. Saddle-stitched in oak-tanned leather of your choice, lined or unlined, with small personal details — monograms, inlays, a nation's colours.</p>
+      <div class="price">From £140 · 4–6 weeks</div>
+    </div>
+    <div class="service">
+      <div class="s-no">III.</div>
+      <h3>Harness &amp; straps</h3>
+      <p>Watch straps, camera straps, dog leads, guitar straps. Bridle leather, brass hardware, and where you ask for it, traditional hand-sewn boar-bristle finishes at the loop ends.</p>
+      <div class="price">From £60 · 2–3 weeks</div>
+    </div>
+  </div>
+ 
+  <div class="process">
+    <div class="eyebrow">The process</div>
+    <h2 style="max-width:22ch;">Every piece follows the same four slow steps.</h2>
+    <div class="process-steps">
+      <div class="step"><h3>Conversation</h3><p>A short exchange about the purpose, the hand that will carry it, and any constraints of material or colour.</p></div>
+      <div class="step"><h3>Drafting</h3><p>A paper pattern is made and corrected. For footwear repair, the existing welt is examined and photographed.</p></div>
+      <div class="step"><h3>Bench work</h3><p>Cutting, skiving, edge finishing, stitching. No power tools other than a leather skiver; everything else by hand.</p></div>
+      <div class="step"><h3>Finish &amp; send</h3><p>Edges burnished, stitching waxed, the piece conditioned and wrapped in tissue with a note of how to keep it.</p></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- =================== CONTACT =================== -->
+<section class="page" id="page-contact">
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">Enquiries</div>
+      <h1>Write, and <em>we'll write back.</em></h1>
+    </div>
+    <div>
+      <p class="subtitle">The workshop answers letters on Thursdays. For commissions, a short description of what you'd like is usually enough to start a conversation.</p>
+    </div>
+  </div>
+ 
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="img-frame contact-visual stitched">
+        <img src="images/birkenstocks.jpg" alt="Restored leather Birkenstock sandals resting on a marbled surface" loading="lazy"/>
+        <div class="img-caption"><span>Recent refurbishment</span><span>—</span></div>
+      </div>
+      <dl>
+        <div><dt>Workshop</dt><dd>Reading, Berkshire<br/>By appointment only</dd></div>
+        <div><dt>Correspondence</dt><dd><a href="#">hello@weltandbristle.co.uk</a></dd></div>
+        <div><dt>Field notes</dt><dd><a href="#" onclick="navigate('journal'); return false;">The journal</a></dd></div>
+        <div><dt>Hours at the bench</dt><dd>Tuesday — Saturday<br/>9.00 — 17.30</dd></div>
+        <div><dt>Social</dt><dd><a href="#">Instagram</a> · <a href="#">Facebook</a></dd></div>
+      </dl>
+    </div>
+ 
+    <div class="contact-form">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" placeholder="How shall we address you?"/>
+      <label for="f-email">Return address</label>
+      <input id="f-email" type="email" placeholder="name@example.com"/>
+      <label for="f-kind">Nature of enquiry</label>
+      <select id="f-kind">
+        <option>A commission</option>
+        <option>A shoe repair</option>
+        <option>A general question</option>
+        <option>Press / writing</option>
+      </select>
+      <label for="f-msg">What's on your mind?</label>
+      <textarea id="f-msg" placeholder="A short description, measurements, a reference if you have one…"></textarea>
+      <button type="button" onclick="submitForm(event)">Send the letter</button>
+    </div>
+  </div>
+</section>
+ 
+</main>
+ 
+<!-- =================== FOOTER =================== -->
+<footer class="site">
+  <div class="foot-brand">
+    <div class="name">Welt &amp; Bristle</div>
+    <p>A small atelier in Reading making hand-stitched leather goods and repairing welted footwear the traditional way.</p>
+  </div>
+  <div>
+    <h4>Visit</h4>
+    <ul>
+      <li><button onclick="navigate('home')">Home</button></li>
+      <li><button onclick="navigate('atelier')">The atelier</button></li>
+      <li><button onclick="navigate('collection')">Collection</button></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Read</h4>
+    <ul>
+      <li><button onclick="navigate('journal')">Journal</button></li>
+      <li><button onclick="navigate('craft')">Commissions</button></li>
+      <li><button onclick="navigate('contact')">Contact</button></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Keep in touch</h4>
+    <ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Letters</a></li>
+    </ul>
+  </div>
+  <div class="foot-copy">
+    <span>© 2026 Welt &amp; Bristle · Reading, Berkshire</span>
+    <span>Site set in Fraunces &amp; Newsreader</span>
+  </div>
+</footer>
+ 
+<!-- =================== SETTINGS PANEL =================== -->
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-header">
+    <h3>Reading preferences</h3>
+    <button class="settings-close" onclick="toggleSettings()" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+ 
+  <div class="settings-group">
+    <h4>Theme</h4>
+    <div class="option-group">
+      <button class="option-btn active" data-theme="day" onclick="setTheme('day')">
+        <span class="swatch sw-day"></span>Daylight
+      </button>
+      <button class="option-btn" data-theme="dusk" onclick="setTheme('dusk')">
+        <span class="swatch sw-dusk"></span>Dusk
+      </button>
+      <button class="option-btn" data-theme="midnight" onclick="setTheme('midnight')">
+        <span class="swatch sw-midnight"></span>Midnight
+      </button>
+    </div>
+  </div>
+ 
+  <div class="settings-group">
+    <h4>Layout</h4>
+    <div class="option-group">
+      <button class="option-btn active" data-layout="editorial" onclick="setLayout('editorial')">Editorial</button>
+      <button class="option-btn" data-layout="minimal" onclick="setLayout('minimal')">Minimal</button>
+      <button class="option-btn" data-layout="gallery" onclick="setLayout('gallery')">Gallery</button>
+    </div>
+  </div>
+ 
+  <div class="settings-group">
+    <h4>Typography</h4>
+    <div class="option-group" style="grid-template-columns:1fr 1fr;">
+      <button class="option-btn active" data-type="serif" onclick="setType('serif')">Serif (default)</button>
+      <button class="option-btn" data-type="sans" onclick="setType('sans')">Sans-serif</button>
+    </div>
+  </div>
+ 
+  <div class="settings-group">
+    <h4>Grain texture</h4>
+    <div class="option-group" style="grid-template-columns:1fr 1fr;">
+      <button class="option-btn active" data-grain="on" onclick="setGrain('on')">Paper</button>
+      <button class="option-btn" data-grain="off" onclick="setGrain('off')">Clean</button>
+    </div>
+  </div>
+ 
+  <div style="margin-top:40px; padding-top:20px; border-top:1px solid var(--rule); font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute);">
+    Preferences apply to this session.
+  </div>
+</div>
+ 
+<!-- =================== CONTENT + JS =================== -->
+<script>
+/* ---------- Articles ---------- */
+const articles = [
+  {
+    id: 'a1', number: 'Nº 002', date: 'This week',
+    image: 'images/shoe-repair.jpg',
+    tags: ['Repair','Welted footwear','Finishing'],
+    title: 'On a quiet repair: only the welt thread',
+    excerpt: 'Quite pleased with this repair as materials were minimal — just the welt thread had rotted, and only thread has been replaced. The old welt and sole are reused.',
+    body: `Quite pleased with this repair as materials were minimal — just the welt thread had rotted, and only thread has been replaced, the old welt and sole being reused.
+ 
+The new sole stitching looks new, however, so it needed dye, wax and polish applying to match the other one. That kind of colour-matching is usually the fussiest stage of any repair: the new thread wants to shout, and everything around it has had a decade or more to soften into its own tone. You build the colour up in thin coats and rub it back until the fresh stitches no longer catch the eye.
+ 
+Finishing is difficult with a topy because of the bottom edge. I use a heel iron, which only has a lip at the top, and work the edge slowly rather than trying to press the iron flat against a profile it was never shaped for.
+ 
+The reward of a repair like this is that almost nothing has been thrown away. One spool of waxed linen, a small tin of dye, and a pair of shoes good for another few years.`
+  },
+  {
+    id: 'a2', number: 'Nº 001', date: 'Earlier',
+    image: 'images/stitching-hands.jpg',
+    tags: ['Technique','Traditional sewing','Boar bristle'],
+    title: 'Sewing with boar bristles',
+    excerpt: 'The bristle is split down the middle to just over an inch from the tip, then the end filament of the tapered, sticky-waxed thread is clamped in the middle…',
+    body: `Sewing with boar bristles. The bristle is split down the middle to just over an inch from the tip, then the end filament of the tapered, sticky-waxed thread is clamped in the middle, four inches of taper are rolled on and locked in place.
+ 
+In use, the bristles are "twitched" through the hole simultaneously, one atop the other, the same way each time to get regular stitches. The wax is made yourself with obscure ingredients like pine tar.
+ 
+Why go through all this bother? Tradition aside, once you have them right it's a doddle. With harness needles you have to put them through one at a time, with a hole big enough for the eye of the needle and two thicknesses of thread. The bristle lets you use a smaller awl, which is gentler on the leather and produces a neater stitch that closes up over time.
+ 
+The pine tar wax is the other half of the craft. It grips the thread against itself, seals the stitch against moisture, and gives that unmistakable workshop smell you only get from a pot that has been used for years.`
+  },
+  {
+    id: 'a3', number: 'Nº 003', date: 'Coming soon',
+    image: 'images/shoe-stitching.jpg',
+    tags: ['Draft','Economics of repair'],
+    title: 'Why repair is also economics',
+    excerpt: 'A short essay connecting the durability literature in environmental economics to what actually happens at a resoling bench — draft in progress.',
+    body: `This piece is still being drafted. It will appear here shortly.
+ 
+In the meantime, please consider this a placeholder for a longer note on the economic case for repair — one that treats saddle stitching, welt construction and hand-waxed thread not as nostalgia, but as reasonable engineering choices under a proper accounting of durability, embodied carbon and the true cost of the disposable.`
+  }
+];
+ 
+/* ---------- Collection pieces ---------- */
+const pieces = [
+  { id:'p1', title:'The Inlay Card Wallet',       kind:'wallet',    spec:'Tan leather · hand-stitched inlay', size:'l', image:'images/wallet-palestine.jpg' },
+  { id:'p2', title:'The Berkshire Bifold',        kind:'wallet',    spec:'Two-tone oak-bark · 8 spi',         size:'m', image:'images/wallet-closed.jpg' },
+  { id:'p3', title:'The Reading Billfold',        kind:'wallet',    spec:'Full-height note pocket',           size:'s', image:'images/wallet-cash.jpg' },
+  { id:'p4', title:'Bifold, opened',              kind:'wallet',    spec:'Symmetrical card slots',            size:'s', image:'images/wallet-open.jpg' },
+  { id:'p5', title:'Interior detail',             kind:'wallet',    spec:'Hand-lined lining',                 size:'m', image:'images/wallet-interior.jpg' },
+  { id:'p6', title:'Oxford resole, Nº 042',       kind:'footwear',  spec:'Welt reused · new thread',          size:'l', image:'images/shoe-repair.jpg' },
+  { id:'p7', title:'Welted oxfords, finished',    kind:'footwear',  spec:'Dye, wax &amp; polish',             size:'m', image:'images/shoes-pair.jpg' },
+  { id:'p8', title:'Welt thread, in hand',        kind:'footwear',  spec:'8 spi, hand-waxed linen',           size:'s', image:'images/shoe-stitching.jpg' },
+  { id:'p9', title:'Birkenstock strap refurb',    kind:'accessory', spec:'Oak-tan replacement straps',        size:'s', image:'images/birkenstocks.jpg' },
+  { id:'p10',title:'Boar-bristle sewing',         kind:'accessory', spec:'Technique study',                   size:'m', image:'images/stitching-hands.jpg' }
+];
+ 
+/* ---------- Rendering ---------- */
+function renderJournal(list){
+  const container = document.getElementById('journalList');
+  if(!list.length){
+    container.innerHTML = '<p style="padding:60px 0; text-align:center; color:var(--ink-mute); font-style:italic;">No entries match that search.</p>';
+    return;
+  }
+  container.innerHTML = list.map((a,i)=>`
+    <div class="article" onclick="openArticle('${a.id}')">
+      <div class="art-image">
+        <div class="img-frame">
+          <img src="${a.image}" alt="${a.title}" loading="lazy"/>
+          <div class="img-caption"><span>${a.number}</span><span>journal</span></div>
+        </div>
+      </div>
+      <div class="art-body">
+        <div class="article-meta-top">
+          <span class="art-no">${a.number}</span>
+          <span class="art-date">${a.date}</span>
+        </div>
+        <div class="art-title">${a.title}</div>
+        <p class="art-excerpt">${a.excerpt}</p>
+        <div class="art-tags">${a.tags.join(' · ')}</div>
+        <div class="art-readmore">Read the note
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+ 
+function renderCollection(filter){
+  const grid = document.getElementById('collectionGrid');
+  const list = filter==='all' ? pieces : pieces.filter(p=>p.kind===filter);
+  grid.innerHTML = list.map(p => `
+    <div class="piece size-${p.size}" onclick="navigate('contact')">
+      <div class="img-frame stitched">
+        <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+        <div class="img-caption"><span>${p.kind}</span><span>${p.id.toUpperCase()}</span></div>
+      </div>
+      <div class="piece-title">${p.title}</div>
+      <div class="piece-meta">
+        <span class="accent">${p.kind.toUpperCase()}</span>
+        <span>${p.spec}</span>
+      </div>
+    </div>
+  `).join('');
+}
+ 
+/* ---------- Navigation ---------- */
+function navigate(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+pageId).classList.add('active');
+  document.querySelectorAll('nav.main button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.page===pageId);
+  });
+  document.getElementById('articleFullView').classList.remove('active');
+  document.getElementById('journalList').style.display='';
+  document.getElementById('journalHeader').style.display='';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+ 
+function openArticle(id){
+  const a = articles.find(x=>x.id===id);
+  if(!a) return;
+  navigate('journal');
+  document.getElementById('afvTitle').textContent = a.title;
+  document.getElementById('afvImg').src = a.image;
+  document.getElementById('afvImg').alt = a.title;
+  document.getElementById('afvMeta').innerHTML =
+    `<span>${a.number}</span><span>${a.date}</span><span>${a.tags.join(' · ')}</span>`;
+  document.getElementById('afvBody').innerHTML =
+    a.body.split('\n\n').map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('journalList').style.display='none';
+  document.getElementById('journalHeader').style.display='none';
+  document.getElementById('articleFullView').classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function closeArticle(){
+  document.getElementById('articleFullView').classList.remove('active');
+  document.getElementById('journalList').style.display='';
+  document.getElementById('journalHeader').style.display='';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+ 
+/* ---------- Search ---------- */
+const searchIndex = [
+  ...articles.map(a => ({kind:'Journal', title:a.title, snippet:a.excerpt, go:()=>openArticle(a.id)})),
+  ...pieces.map(p => ({kind:p.kind.charAt(0).toUpperCase()+p.kind.slice(1), title:p.title, snippet:p.spec, go:()=>{ navigate('collection'); setFilter(p.kind); }})),
+  { kind:'Page', title:'The Atelier',    snippet:'A scholar\'s bench. The story behind Welt & Bristle.',        go:()=>navigate('atelier') },
+  { kind:'Page', title:'Commissions',    snippet:'Services, pricing and the four-step process.',                go:()=>navigate('craft') },
+  { kind:'Page', title:'Contact',        snippet:'Write to the workshop. Appointments by letter.',              go:()=>navigate('contact') },
+  { kind:'Technique', title:'Saddle stitch', snippet:'Hand-sewn at 8 stitches per inch with hand-waxed linen thread.', go:()=>openArticle('a2') },
+  { kind:'Technique', title:'Pine tar wax',  snippet:'Traditional thread wax made from pine tar and tallow.',          go:()=>openArticle('a2') },
+  { kind:'Technique', title:'Welt repair',   snippet:'Replacing only the welt thread while reusing the old sole.',     go:()=>openArticle('a1') }
+];
+function runSearch(q){
+  const results = document.getElementById('searchResults');
+  q = q.trim().toLowerCase();
+  if(!q){ results.classList.remove('active'); results.innerHTML=''; return; }
+  const hits = searchIndex.filter(x =>
+    x.title.toLowerCase().includes(q) ||
+    x.snippet.toLowerCase().includes(q) ||
+    x.kind.toLowerCase().includes(q)
+  ).slice(0,8);
+  if(hits.length===0){
+    results.innerHTML = '<div class="search-empty">No matches. Try "welt", "bristle", "wallet" or "pine".</div>';
+  } else {
+    results.innerHTML = hits.map((h,i)=>`
+      <div class="search-result" data-idx="${i}">
+        <div class="r-kind">${h.kind}</div>
+        <div class="r-title">${h.title}</div>
+        <div class="r-snippet">${h.snippet}</div>
+      </div>`).join('');
+    results.querySelectorAll('.search-result').forEach((el,i)=>{
+      el.addEventListener('click', ()=>{
+        hits[i].go();
+        document.getElementById('search').value='';
+        results.classList.remove('active');
+      });
+    });
+  }
+  results.classList.add('active');
+}
+document.getElementById('search').addEventListener('input', e=>runSearch(e.target.value));
+document.getElementById('search').addEventListener('blur', ()=>{
+  setTimeout(()=>document.getElementById('searchResults').classList.remove('active'), 180);
+});
+document.getElementById('search').addEventListener('focus', e=>{ if(e.target.value) runSearch(e.target.value); });
+ 
+/* ---------- Filter bar ---------- */
+function setFilter(kind){
+  document.querySelectorAll('#filterBar button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.filter===kind);
+  });
+  renderCollection(kind);
+}
+document.querySelectorAll('#filterBar button').forEach(btn=>{
+  btn.addEventListener('click', ()=> setFilter(btn.dataset.filter));
+});
+ 
+/* ---------- Settings ---------- */
+function toggleSettings(){ document.getElementById('settingsPanel').classList.toggle('open'); }
+function setTheme(name){
+  document.body.classList.remove('theme-day','theme-dusk','theme-midnight');
+  document.body.classList.add('theme-'+name);
+  document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active', b.dataset.theme===name));
+}
+function setLayout(name){
+  document.body.classList.remove('layout-editorial','layout-minimal','layout-gallery');
+  document.body.classList.add('layout-'+name);
+  document.querySelectorAll('[data-layout]').forEach(b=>b.classList.toggle('active', b.dataset.layout===name));
+}
+function setType(name){
+  document.body.classList.remove('type-serif','type-sans');
+  document.body.classList.add('type-'+name);
+  document.querySelectorAll('[data-type]').forEach(b=>b.classList.toggle('active', b.dataset.type===name));
+}
+function setGrain(state){
+  document.body.style.setProperty('--grain', state==='off' ? '0' : '.15');
+  document.querySelectorAll('[data-grain]').forEach(b=>b.classList.toggle('active', b.dataset.grain===state));
+}
+ 
+/* ---------- Contact form (visual only) ---------- */
+function submitForm(e){
+  e.preventDefault();
+  const btn = e.target;
+  const original = btn.textContent;
+  btn.textContent = 'Letter sent · thank you';
+  btn.style.background = 'var(--sage)';
+  btn.style.color = 'var(--cream)';
+  setTimeout(()=>{
+    btn.textContent = original;
+    btn.style.background = '';
+    btn.style.color = '';
+    document.getElementById('f-name').value='';
+    document.getElementById('f-email').value='';
+    document.getElementById('f-msg').value='';
+  }, 2500);
+}
+ 
+/* ---------- Init ---------- */
+renderJournal(articles);
+renderCollection('all');
+ 
+document.addEventListener('click', (e)=>{
+  const panel = document.getElementById('settingsPanel');
+  const gear = document.querySelector('.gear-btn');
+  if(panel.classList.contains('open') && !panel.contains(e.target) && !gear.contains(e.target)){
+    panel.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
