@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Welt &amp; Bristle — Heritage Leatherwork</title>
 <meta name="description" content="Hand-stitched leather goods by a Reading-based maker. Wallets, footwear, and accessories made in the traditional manner." />
- 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- 
+
 <style>
 /* ---------- Design Tokens ---------- */
 :root{
@@ -25,16 +25,16 @@
   --oxblood:    #6b2a22;
   --sage:        #556749;
   --cream:       #faf4e4;
- 
+
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:   'Newsreader', Georgia, serif;
   --font-mono:   'JetBrains Mono', ui-monospace, monospace;
- 
+
   --radius: 2px;
   --ease: cubic-bezier(.2,.7,.2,1);
   --grain: .15;
 }
- 
+
 body.theme-dusk{
   --bg:#2a1e15; --bg-paper:#32241a; --bg-deep:#211610;
   --ink:#f1e4cd; --ink-soft:#d9c9ac; --ink-mute:#a88e6c;
@@ -49,7 +49,7 @@ body.theme-midnight{
   --oxblood:#a04638; --sage:#7a9065; --cream:#e9dcc1;
   --grain:.28;
 }
- 
+
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 html,body{
@@ -62,7 +62,7 @@ html,body{
   text-rendering:optimizeLegibility;
   transition: background .5s var(--ease), color .5s var(--ease);
 }
- 
+
 /* Grain overlay */
 body::before{
   content:""; position:fixed; inset:0;
@@ -72,14 +72,14 @@ body::before{
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .15 0 0 0 0 .1 0 0 0 0 .05 0 0 0 .6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 body.theme-midnight::before, body.theme-dusk::before{ mix-blend-mode:overlay; }
- 
+
 ::selection{ background:var(--accent); color:var(--cream); }
 ::-webkit-scrollbar{ width:10px; height:10px; }
 ::-webkit-scrollbar-track{ background:var(--bg-deep); }
 ::-webkit-scrollbar-thumb{ background:var(--rule); border-radius:10px; }
- 
+
 img{ display:block; max-width:100%; }
- 
+
 /* ---------- Header ---------- */
 header.site{
   position:sticky; top:0; z-index:50;
@@ -114,7 +114,7 @@ header.site{
   font-size:10px; color:var(--ink-mute);
   letter-spacing:.18em; text-transform:uppercase; margin-top:4px;
 }
- 
+
 .search-wrap{ position:relative; max-width:420px; justify-self:start; width:100%; }
 .search-wrap input{
   width:100%; padding:10px 14px 10px 38px;
@@ -140,7 +140,7 @@ header.site{
 .search-result .r-snippet{ font-size:13px; color:var(--ink-soft); line-height:1.4; }
 .search-result .r-kind{ font-family:var(--font-mono); font-size:10px; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; }
 .search-empty{ padding:18px; color:var(--ink-mute); font-style:italic; text-align:center; font-size:14px; }
- 
+
 nav.main{ display:flex; gap:6px; }
 nav.main button{
   background:none; border:0;
@@ -155,7 +155,7 @@ nav.main button.active::after{
   content:""; position:absolute; bottom:2px; left:14px; right:14px;
   height:1px; background:var(--accent);
 }
- 
+
 .gear-btn{
   width:40px; height:40px; display:grid; place-items:center;
   background:none; border:1px solid var(--rule); border-radius:50%;
@@ -164,7 +164,7 @@ nav.main button.active::after{
 }
 .gear-btn:hover{ transform:rotate(60deg); border-color:var(--accent); color:var(--accent-deep); }
 .gear-btn svg{ width:18px; height:18px; }
- 
+
 /* ---------- Main / pages ---------- */
 main{ max-width:1500px; margin:0 auto; padding:0 32px 120px; }
 .page{ display:none; animation: pageIn .6s var(--ease); }
@@ -173,7 +173,7 @@ main{ max-width:1500px; margin:0 auto; padding:0 32px 120px; }
   from{ opacity:0; transform:translateY(8px); }
   to{ opacity:1; transform:translateY(0); }
 }
- 
+
 /* ---------- Type ---------- */
 .eyebrow{
   font-family:var(--font-mono);
@@ -196,7 +196,7 @@ h2{ font-size: clamp(32px, 4.5vw, 60px); line-height:1.05; font-variation-settin
 h3{ font-size: clamp(20px, 2vw, 26px); line-height:1.2; font-variation-settings:"opsz" 36, "SOFT" 20; }
 p{ margin:0 0 1em; color:var(--ink-soft); font-size:17px; }
 p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--font-display); font-weight:300; line-height:1.45; font-variation-settings:"opsz" 36, "SOFT" 50; }
- 
+
 /* ---------- Image primitives ---------- */
 .img-frame{
   position:relative; overflow:hidden;
@@ -227,14 +227,14 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   pointer-events:none; z-index:1;
 }
 .img-frame:hover::after{ opacity:1; }
- 
+
 /* Stitched border — decorative dashed inset */
 .stitched::before{
   content:""; position:absolute; inset:10px;
   border:1px dashed rgba(250,244,228,.55);
   pointer-events:none; z-index:2;
 }
- 
+
 /* ---------- HOME — Hero ---------- */
 .hero{
   display:grid;
@@ -254,7 +254,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 }
 .hero-meta span{ position:relative; padding-left:14px; }
 .hero-meta span::before{ content:"§"; position:absolute; left:0; color:var(--accent); font-family:var(--font-display); font-style:italic; }
- 
+
 .hero-visual{
   aspect-ratio: 4/5;
   position:relative;
@@ -286,7 +286,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   border:1px dashed var(--accent-deep); border-radius:50%;
 }
 .hero-badge .bd-inner{ position:relative; z-index:2; padding: 0 10px; }
- 
+
 /* ---------- Image strip between sections ---------- */
 .image-strip{
   display:grid;
@@ -298,7 +298,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 .image-strip .img-frame:nth-child(1){ aspect-ratio: 3/4; }
 .image-strip .img-frame:nth-child(3){ transform:translateY(-28px); }
 .image-strip .img-frame:nth-child(5){ transform:translateY(-14px); }
- 
+
 /* ---------- Meta row ---------- */
 .home-meta-row{
   display:grid; grid-template-columns: repeat(4, 1fr);
@@ -318,7 +318,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   color:var(--ink-mute); letter-spacing:.2em; text-transform:uppercase;
   margin-top:8px;
 }
- 
+
 /* ---------- Featured full-bleed section ---------- */
 .featured-full{
   position:relative;
@@ -370,7 +370,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   margin-top:4px;
   font-variation-settings:"opsz" 36, "SOFT" 30;
 }
- 
+
 /* ---------- Home three-up ---------- */
 .home-three{
   display:grid; grid-template-columns: repeat(3, 1fr);
@@ -386,9 +386,341 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   margin-bottom:8px;
 }
 .tile p{ font-size:15px; line-height:1.5; }
- 
+
 /* ---------- Ethos block ---------- */
-.ethos{
+/* ---------- Product Detail Page ---------- */
+.detail-back{
+  display:inline-flex; align-items:center; gap:8px;
+  background:none; border:0;
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent-deep); cursor:pointer;
+  padding:0; margin:32px 0;
+}
+.detail-back:hover{ color:var(--accent); }
+.detail-back svg{ width:14px; height:14px; }
+
+.detail-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  margin-bottom: 60px;
+  align-items:start;
+}
+.detail-image{ position:sticky; top:100px; }
+.detail-image .img-frame{ aspect-ratio: 4/5; }
+
+.detail-meta-top{
+  font-family:var(--font-mono); font-size:11px;
+  color:var(--ink-mute); letter-spacing:.25em; text-transform:uppercase;
+  margin-bottom: 18px;
+  display:flex; gap:14px; flex-wrap:wrap;
+}
+.detail-meta-top .accent{ color:var(--accent); }
+.detail-content h1{
+  font-size: clamp(36px, 4.6vw, 64px);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.detail-subtitle{
+  font-family:var(--font-display); font-style:italic; font-weight:300;
+  font-size:22px; line-height:1.3;
+  color:var(--ink-soft);
+  margin-bottom: 32px;
+  font-variation-settings:"opsz" 36, "SOFT" 80;
+}
+.detail-description{
+  font-size:17px; line-height:1.65; color:var(--ink);
+  margin-bottom: 36px;
+  max-width: 52ch;
+}
+
+.detail-headline{
+  display:grid; grid-template-columns: 1fr 1fr;
+  margin-bottom: 36px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.detail-headline > div{ padding: 18px 0; }
+.detail-headline > div + div{
+  border-left:1px solid var(--rule);
+  padding-left: 24px;
+}
+.detail-headline .label{
+  font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:6px;
+}
+.detail-headline .value{
+  font-family:var(--font-display);
+  font-size:22px;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+  color:var(--ink);
+}
+.detail-headline .value em{
+  font-style:italic; color:var(--accent-deep);
+  font-variation-settings:"opsz" 36, "SOFT" 80;
+}
+
+.detail-specs{ margin-bottom: 36px; }
+.detail-specs h3,
+.detail-care h3,
+.detail-dim h3{
+  font-family:var(--font-mono); font-size:11px;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:var(--ink-mute);
+  margin: 0 0 14px;
+  font-weight:500;
+}
+.detail-specs ul{ list-style:none; padding:0; margin:0; }
+.detail-specs li{
+  padding: 12px 0;
+  border-bottom:1px dashed var(--rule);
+  font-size:15px;
+  color:var(--ink-soft);
+  display:flex; align-items:center; gap:14px;
+}
+.detail-specs li::before{
+  content: "§";
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  flex: none;
+}
+
+.detail-dim{
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom:1px dashed var(--rule);
+}
+.detail-dim p{
+  font-family:var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  margin:0;
+}
+
+.detail-care{
+  background: var(--bg-paper);
+  border-left: 2px solid var(--accent);
+  padding: 22px 26px;
+  margin-bottom: 36px;
+}
+.detail-care h3{ color:var(--accent-deep); }
+.detail-care p{
+  font-size: 15px; line-height: 1.6;
+  margin: 0;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+}
+
+.detail-cta{
+  display:flex; gap: 14px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.detail-cta button{
+  flex: 1; min-width: 200px;
+  padding: 16px 28px;
+  font-family:var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .25em; text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+  text-align: center;
+  transition: all .3s var(--ease);
+}
+.detail-cta .primary{
+  background: var(--ink);
+  color: var(--cream);
+}
+.detail-cta .primary:hover{
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+.detail-cta .secondary{
+  background: transparent;
+  color: var(--ink);
+}
+.detail-cta .secondary:hover{
+  background: var(--bg-paper);
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+/* Related pieces */
+.detail-related{
+  border-top:1px solid var(--rule);
+  padding-top: 60px;
+  margin-bottom: 80px;
+}
+.detail-related-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 40px;
+}
+.related-piece{ cursor: pointer; transition: transform .4s var(--ease); }
+.related-piece:hover{ transform: translateY(-4px); }
+.related-piece .img-frame{
+  aspect-ratio: 4/5;
+  margin-bottom: 16px;
+}
+.related-piece h4{
+  font-family:var(--font-display);
+  font-weight:400; font-size:20px;
+  color:var(--ink);
+  margin: 0 0 4px;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.related-piece .related-meta{
+  font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* Functional zoom button (replaces decorative zoom-hint) */
+.zoom-btn{
+  position:absolute;
+  top: 14px; right: 14px;
+  width: 36px; height: 36px;
+  background: rgba(20, 12, 6, 0.65);
+  border: 1px solid rgba(250, 244, 228, 0.3);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--cream);
+  z-index: 4;
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .3s var(--ease), transform .3s var(--ease), background .2s var(--ease);
+  cursor: zoom-in;
+  padding: 0;
+}
+.img-frame:hover .zoom-btn{
+  opacity: 1;
+  transform: scale(1);
+}
+.zoom-btn:hover{
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+.zoom-btn svg{ width: 14px; height: 14px; }
+
+/* ---------- Workshop materials section ---------- */
+.workshop-section{
+  margin: 100px 0;
+  padding: 80px 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.workshop-grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+}
+.ws-cell{
+  display:flex; flex-direction:column;
+}
+.ws-cell .img-frame{
+  aspect-ratio: 4/5;
+  margin-bottom: 22px;
+}
+.ws-cell.ws-large .img-frame{ aspect-ratio: 5/6; }
+.ws-text h3{
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.ws-text p{
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 38ch;
+  color: var(--ink-soft);
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:300;
+  background: rgba(20, 12, 6, 0.94);
+  backdrop-filter: blur(8px);
+  display:none;
+  align-items:center; justify-content:center;
+  padding: 60px;
+  cursor: zoom-out;
+  animation: lightboxFade .35s var(--ease);
+}
+.lightbox.active{ display:flex; }
+@keyframes lightboxFade{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+.lightbox img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
+  cursor: default;
+  animation: lightboxScale .4s var(--ease);
+}
+@keyframes lightboxScale{
+  from{ opacity:0; transform: scale(.97); }
+  to{ opacity:1; transform: scale(1); }
+}
+.lightbox-close{
+  position:absolute; top: 24px; right: 28px;
+  width: 44px; height: 44px;
+  background: rgba(250,244,228,.1);
+  border: 1px solid rgba(250,244,228,.3);
+  border-radius: 50%;
+  color: var(--cream);
+  cursor: pointer;
+  display:grid; place-items:center;
+  transition: background .2s var(--ease);
+}
+.lightbox-close:hover{ background: rgba(250,244,228,.25); }
+.lightbox-caption{
+  position:absolute;
+  bottom: 24px; left: 0; right: 0;
+  text-align:center;
+  color: rgba(250,244,228,.75);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.lightbox-counter{
+  position:absolute;
+  top: 28px; left: 28px;
+  color: rgba(250,244,228,.6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+}
+.lightbox-nav{
+  position:absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px;
+  background: rgba(250,244,228,.1);
+  border: 1px solid rgba(250,244,228,.3);
+  border-radius: 50%;
+  color: var(--cream);
+  cursor: pointer;
+  display:grid; place-items:center;
+  transition: background .2s var(--ease);
+}
+.lightbox-nav:hover{ background: rgba(250,244,228,.25); }
+.lightbox-prev{ left: 28px; }
+.lightbox-next{ right: 28px; }
+
+/* hover indicates clickable image */
+.img-frame{ cursor: pointer; }
+
+
   padding: 80px 0;
   border-top:1px solid var(--rule);
   display:grid; grid-template-columns: 1fr 2fr;
@@ -400,7 +732,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   color:var(--accent); line-height:.9;
   font-variation-settings:"opsz" 144, "SOFT" 100;
 }
- 
+
 /* ---------- Page header ---------- */
 .page-header{
   padding: 80px 0 40px;
@@ -413,7 +745,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   color:var(--ink-soft); font-size:18px;
   max-width:55ch; margin-top:18px;
 }
- 
+
 /* ---------- ATELIER ---------- */
 .atelier-hero{
   position:relative;
@@ -438,7 +770,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 .atelier-hero .ah-content h1 em{ color:#e9b989; }
 .atelier-hero .ah-content .eyebrow{ color: rgba(250,244,228,.75); }
 .atelier-hero .ah-content .eyebrow::before{ background: rgba(250,244,228,.8); }
- 
+
 .atelier-body{
   display:grid; grid-template-columns: 1fr 1fr;
   gap:80px; margin-bottom:80px;
@@ -458,7 +790,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 }
 .atelier-visual .img-frame{ aspect-ratio: 3/4; }
 .atelier-visual .img-frame:nth-child(2){ aspect-ratio: 5/4; margin-left:40px; }
- 
+
 .pull-quote{
   margin: 80px 0;
   padding: 60px 0;
@@ -493,7 +825,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   display:flex; justify-content:space-between; gap:12px;
   text-transform:uppercase;
 }
- 
+
 /* ---------- COLLECTION ---------- */
 .filter-bar{
   display:flex; gap:8px; flex-wrap:wrap;
@@ -512,7 +844,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 .filter-bar button.active{
   background:var(--ink); color:var(--cream); border-color:var(--ink);
 }
- 
+
 .collection-grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -542,7 +874,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   margin-top:6px; display:flex; gap:14px;
 }
 .piece-meta .accent{ color:var(--accent); }
- 
+
 /* ---------- JOURNAL ---------- */
 .journal-layout{ display:grid; gap:0; }
 .article{
@@ -602,7 +934,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 }
 .art-readmore svg{ width:16px; height:16px; transition:transform .3s var(--ease); }
 .article:hover .art-readmore svg{ transform:translateX(6px); }
- 
+
 .article-full-view{
   display:none; padding: 40px 0;
   animation: pageIn .5s var(--ease);
@@ -642,7 +974,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   padding:4px 14px 0 0;
   color:var(--accent-deep); font-style:italic;
 }
- 
+
 /* ---------- CRAFT ---------- */
 .craft-hero{
   position:relative;
@@ -667,7 +999,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 .craft-hero h1 em{ color:#e9b989; }
 .craft-hero .eyebrow{ color:rgba(250,244,228,.75); }
 .craft-hero .eyebrow::before{ background:rgba(250,244,228,.8); }
- 
+
 .craft-grid{
   display:grid; grid-template-columns: repeat(3, 1fr);
   gap: 0; border-top:1px solid var(--rule);
@@ -692,7 +1024,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   margin-top:20px; padding-top:14px;
   border-top:1px dashed var(--rule);
 }
- 
+
 .process{ margin-bottom:80px; }
 .process-steps{
   display:grid; grid-template-columns: repeat(4, 1fr);
@@ -710,7 +1042,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 }
 .step h3{ font-size:20px; margin-bottom:10px; }
 .step p{ font-size:14px; color:var(--ink-soft); }
- 
+
 /* ---------- CONTACT ---------- */
 .contact-layout{
   display:grid; grid-template-columns: 1.3fr 1fr;
@@ -739,7 +1071,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
 .contact-visual{
   aspect-ratio: 3/4; margin-bottom:24px;
 }
- 
+
 .contact-form{
   background:var(--bg-paper);
   border:1px solid var(--rule);
@@ -768,7 +1100,7 @@ p.lede{ font-size:20px; color:var(--ink); font-style:italic; font-family:var(--f
   transition: background .3s var(--ease);
 }
 .contact-form button:hover{ background:var(--accent-deep); }
- 
+
 /* ---------- Footer ---------- */
 footer.site{
   border-top:1px solid var(--rule);
@@ -804,7 +1136,7 @@ footer ul button:hover, footer ul a:hover{ color:var(--accent-deep); }
   display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
   text-transform:uppercase; margin-top:20px;
 }
- 
+
 /* ---------- Settings Panel ---------- */
 .settings-panel{
   position:fixed; top:0; right:0; bottom:0;
@@ -833,7 +1165,7 @@ footer ul button:hover, footer ul a:hover{ color:var(--accent-deep); }
   color:var(--ink-soft); border-radius:50%;
 }
 .settings-close:hover{ background:var(--bg-deep); color:var(--ink); }
- 
+
 .settings-group{ margin-bottom:28px; }
 .settings-group h4{
   font-family:var(--font-mono); font-size:10px;
@@ -860,7 +1192,7 @@ footer ul button:hover, footer ul a:hover{ color:var(--accent-deep); }
 .swatch.sw-day{ background:linear-gradient(135deg,#efe7d6,#8b4a26); }
 .swatch.sw-dusk{ background:linear-gradient(135deg,#2a1e15,#d89767); }
 .swatch.sw-midnight{ background:linear-gradient(135deg,#0f0c0a,#c8944e); }
- 
+
 /* Layout variants */
 body.layout-minimal main{ max-width:860px; }
 body.layout-minimal .hero{ grid-template-columns: 1fr; gap:40px; min-height:auto; padding:40px 0; }
@@ -881,21 +1213,21 @@ body.layout-minimal .meta-cell:nth-child(2n){ border-right:0; }
 body.layout-minimal .featured-full{ grid-template-columns: 1fr; }
 body.layout-minimal .featured-full .ff-image::after{ display:none; }
 body.layout-minimal .article{ grid-template-columns: 1fr; gap:24px; }
- 
+
 body.layout-gallery main{ max-width:1700px; }
 body.layout-gallery .collection-grid{ grid-template-columns: repeat(12, 1fr); }
 body.layout-gallery .piece{ grid-column: span 3 !important; }
 body.layout-gallery .piece .img-frame{ aspect-ratio: 3/4 !important; }
 body.layout-gallery .home-three{ grid-template-columns: repeat(4, 1fr); }
 body.layout-gallery .image-strip{ grid-template-columns: repeat(6, 1fr); }
- 
+
 /* Typography variants */
 body.type-sans{
   --font-display: 'Newsreader', serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em; font-weight:600; }
- 
+
 /* Responsive */
 @media (max-width: 1000px){
   .featured-full{ grid-template-columns: 1fr; }
@@ -913,7 +1245,14 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
   .image-strip .img-frame:nth-child(n){ transform:none; }
   .image-strip .img-frame:nth-child(n+5){ display:none; }
   .home-three, .atelier-body, .twin-pursuits, .process-steps,
-  .contact-layout, .craft-grid, .home-meta-row{ grid-template-columns: 1fr !important; }
+  .contact-layout, .craft-grid, .home-meta-row,
+  .workshop-grid, .detail-grid, .detail-related-grid{ grid-template-columns: 1fr !important; }
+  .detail-image{ position:static; }
+  .detail-headline{ grid-template-columns: 1fr; }
+  .detail-headline > div + div{
+    border-left:0; padding-left:0;
+    border-top:1px solid var(--rule);
+  }
   .collection-grid .piece{ grid-column: span 12 !important; }
   .collection-grid .piece .img-frame{ aspect-ratio: 5/4 !important; }
   .meta-cell{ border-right:0; border-bottom:1px solid var(--rule); }
@@ -929,11 +1268,15 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
   .atelier-visual{ position:static; }
   .atelier-visual .img-frame:nth-child(2){ margin-left:0; }
   .atelier-hero, .craft-hero, .featured-full{ margin-left:-20px; margin-right:-20px; }
+  .lightbox{ padding: 40px 16px; }
+  .lightbox-prev{ left: 12px; }
+  .lightbox-next{ right: 12px; }
+  .lightbox-nav{ width: 42px; height: 42px; }
 }
 </style>
 </head>
 <body class="theme-day layout-editorial type-serif">
- 
+
 <!-- =================== HEADER =================== -->
 <header class="site">
   <div class="header-inner">
@@ -952,13 +1295,13 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
         <span class="tag">Hand-stitched · Reading</span>
       </span>
     </a>
- 
+
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input id="search" type="text" placeholder="Search articles, pieces, techniques…" autocomplete="off"/>
       <div class="search-results" id="searchResults"></div>
     </div>
- 
+
     <nav class="main" id="mainNav">
       <button onclick="navigate('home')" data-page="home" class="active">Home</button>
       <button onclick="navigate('atelier')" data-page="atelier">Atelier</button>
@@ -967,7 +1310,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <button onclick="navigate('craft')" data-page="craft">Craft</button>
       <button onclick="navigate('contact')" data-page="contact">Contact</button>
     </nav>
- 
+
     <button class="gear-btn" onclick="toggleSettings()" aria-label="Settings">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="3"/>
@@ -976,12 +1319,12 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
     </button>
   </div>
 </header>
- 
+
 <main>
- 
+
 <!-- =================== HOME =================== -->
 <section class="page active" id="page-home">
- 
+
   <div class="hero">
     <div class="hero-text">
       <div class="eyebrow">Est. 2024 · Reading, Berkshire</div>
@@ -1004,7 +1347,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
         <span class="bd-inner">Made<br/>by hand<br/>in Reading</span>
       </div>
       <div class="img-frame stitched">
-        <img src="images/wallet-palestine.jpg" alt="Hand-stitched tan leather wallet with an inlaid Palestinian flag panel" loading="eager"/>
+        <img src="images/pal-wallet-wood.jpg" alt="Hand-stitched tan leather wallet with an inlaid Palestinian flag panel, resting on a wooden surface" loading="eager"/>
         <div class="img-caption">
           <span>Card wallet · inlay</span>
           <span>Nº 012</span>
@@ -1012,38 +1355,38 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </div>
     </div>
   </div>
- 
+
   <!-- Image strip — workshop overview -->
   <div class="image-strip">
     <div class="img-frame">
-      <img src="images/stitching-hands.jpg" alt="Hands pulling waxed linen thread through leather with a harness needle" loading="lazy"/>
-      <div class="img-caption"><span>At the bench</span><span>—</span></div>
+      <img src="images/plough-gauge.jpg" alt="A vintage plough gauge cutting parallel strips from a hide of vegetable-tanned leather" loading="lazy"/>
+      <div class="img-caption"><span>Plough gauge</span><span>—</span></div>
     </div>
     <div class="img-frame">
-      <img src="images/wallet-closed.jpg" alt="A folded two-tone brown leather bifold wallet held in hand" loading="lazy"/>
-      <div class="img-caption"><span>Berkshire bifold</span><span>—</span></div>
+      <img src="images/beeswax-bars.jpg" alt="A small stack of pale yellow hand-poured beeswax bars resting on weathered oak" loading="lazy"/>
+      <div class="img-caption"><span>Hand-cast beeswax</span><span>—</span></div>
     </div>
     <div class="img-frame">
-      <img src="images/shoe-stitching.jpg" alt="Close-up of needle and waxed thread entering a welted shoe" loading="lazy"/>
-      <div class="img-caption"><span>Welt repair</span><span>—</span></div>
+      <img src="images/wingtip-chelsea.jpg" alt="A pair of walnut pebble-grain wingtip Chelsea boots on tissue paper" loading="lazy"/>
+      <div class="img-caption"><span>Wingtip Chelsea</span><span>—</span></div>
     </div>
     <div class="img-frame">
-      <img src="images/wallet-interior.jpg" alt="Open interior of a hand-stitched leather wallet showing card slots" loading="lazy"/>
-      <div class="img-caption"><span>Interior, lined</span><span>—</span></div>
+      <img src="images/heel-iron.jpg" alt="A heel iron pressed against the side of a black welted boot during finishing" loading="lazy"/>
+      <div class="img-caption"><span>Heel iron</span><span>—</span></div>
     </div>
     <div class="img-frame">
-      <img src="images/birkenstocks.jpg" alt="A pair of Birkenstock sandals with restored leather straps and buckles" loading="lazy"/>
-      <div class="img-caption"><span>Strap refurb</span><span>—</span></div>
+      <img src="images/long-bifold-black.jpg" alt="A long-format black leather bifold with brass studs at the corners" loading="lazy"/>
+      <div class="img-caption"><span>Long bifold</span><span>—</span></div>
     </div>
   </div>
- 
+
   <div class="home-meta-row">
     <div class="meta-cell"><div class="num">14</div><div class="lbl">Pieces in rotation</div></div>
     <div class="meta-cell"><div class="num">8 spi</div><div class="lbl">Stitch density</div></div>
     <div class="meta-cell"><div class="num">∞</div><div class="lbl">Repair guarantee</div></div>
     <div class="meta-cell"><div class="num">03</div><div class="lbl">Commissions open</div></div>
   </div>
- 
+
   <!-- Featured full-bleed -->
   <div class="featured-full">
     <div class="ff-image">
@@ -1061,39 +1404,77 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </div>
     </div>
   </div>
- 
+
   <!-- Home three-up -->
   <div class="eyebrow">On the bench this season</div>
   <div class="home-three">
-    <div class="tile" onclick="navigate('collection')">
+    <div class="tile" onclick="openDetail('p24')">
       <div class="img-frame stitched">
-        <img src="images/wallet-open.jpg" alt="Fully opened bifold wallet showing symmetrical card slots and a centre pocket" loading="lazy"/>
-        <div class="img-caption"><span>Nº 017</span><span>wallet</span></div>
+        <img src="images/wingtip-chelsea.jpg" alt="A pair of walnut wingtip Chelsea boots resting on tissue paper" loading="lazy"/>
+        <div class="img-caption"><span>Nº 024</span><span>boots</span></div>
       </div>
-      <div class="meta">Nº 017 · Bifold</div>
-      <h3>The Berkshire Bifold</h3>
-      <p>Six card slots, lined interior, dovetailed seams.</p>
+      <div class="meta">Footwear · Nº 024</div>
+      <h3>The Wingtip Chelsea, in walnut</h3>
+      <p>Hand-welted, with a country-cut wingtip vamp and stacked leather heel.</p>
     </div>
-    <div class="tile" onclick="navigate('collection')">
+    <div class="tile" onclick="openDetail('p17')">
       <div class="img-frame stitched">
-        <img src="images/shoes-pair.jpg" alt="A pair of brown pebble-grain Oxford shoes viewed from the toes" loading="lazy"/>
-        <div class="img-caption"><span>Nº 042</span><span>repair</span></div>
+        <img src="images/sandals-skyme.jpg" alt="A pair of brown leather Skyme crossover sandals with brass ankle buckles" loading="lazy"/>
+        <div class="img-caption"><span>Nº 017</span><span>sandals</span></div>
       </div>
-      <div class="meta">Repair · Nº 042</div>
-      <h3>Welted oxfords, saved</h3>
-      <p>Welt thread replaced, old sole reused, finish rebuilt by hand.</p>
+      <div class="meta">Footwear · Nº 017</div>
+      <h3>Skyme Crossover Sandals</h3>
+      <p>Bridle straps with brass buckles; a summer counterpart to the welted line.</p>
     </div>
-    <div class="tile" onclick="navigate('journal')">
+    <div class="tile" onclick="openArticle('a3')">
       <div class="img-frame stitched">
-        <img src="images/stitching-hands.jpg" alt="Close-up of a hand pulling a long waxed thread through stitched leather" loading="lazy"/>
-        <div class="img-caption"><span>Note Nº 001</span><span>journal</span></div>
+        <img src="images/waxes-materials.jpg" alt="Components for hand-made wax: linen thread, finished wax balls, beeswax and pine resin" loading="lazy"/>
+        <div class="img-caption"><span>Nº 003</span><span>journal</span></div>
       </div>
       <div class="meta">From the journal</div>
-      <h3>Sewing with boar bristles</h3>
-      <p>Why split-bristle sewing still produces the finest hand-stitched seam.</p>
+      <h3>A pot of wax, made from obscure ingredients</h3>
+      <p>Pine resin, beeswax and tallow. The one ingredient that cannot be bought.</p>
     </div>
   </div>
- 
+
+  <!-- Workshop materials gallery -->
+  <div class="workshop-section">
+    <div class="eyebrow">From the workshop</div>
+    <h2 style="max-width:18ch; margin-bottom:48px;">Old tools, slow materials, no shortcuts.</h2>
+    <div class="workshop-grid">
+      <div class="ws-cell ws-large">
+        <div class="img-frame stitched">
+          <img src="images/lasting-upper.jpg" alt="A leather upper being lasted by hand over a wooden last with hundreds of small tacks holding it in shape" loading="lazy"/>
+          <div class="img-caption"><span>Lasting</span><span>by hand</span></div>
+        </div>
+        <div class="ws-text">
+          <h3>Built one nail at a time</h3>
+          <p>Each upper is held to its last with several hundred temporary nails before the welt is sewn. The shape it takes here is the shape it will keep for years.</p>
+        </div>
+      </div>
+      <div class="ws-cell">
+        <div class="img-frame stitched">
+          <img src="images/beeswax-bars.jpg" alt="Five hand-poured pale-yellow beeswax bars on weathered oak" loading="lazy"/>
+          <div class="img-caption"><span>Beeswax</span><span>hand-poured</span></div>
+        </div>
+        <div class="ws-text">
+          <h3>Wax made on the bench</h3>
+          <p>The wax that seals every stitch is melted, poured and cooled into bars in the workshop. It does not exist for sale.</p>
+        </div>
+      </div>
+      <div class="ws-cell">
+        <div class="img-frame stitched">
+          <img src="images/plough-gauge.jpg" alt="A vintage plough gauge cutting parallel strips from a hide of vegetable-tanned leather" loading="lazy"/>
+          <div class="img-caption"><span>Plough gauge</span><span>cutting straps</span></div>
+        </div>
+        <div class="ws-text">
+          <h3>One straight line</h3>
+          <p>The plough gauge cuts a perfectly parallel strip from a hide. It is the only way to do this without a leather guillotine — and the result has none of the press marks the guillotine leaves.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Ethos -->
   <div class="ethos">
     <div class="big-mark">&para;</div>
@@ -1107,52 +1488,52 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </p>
     </div>
   </div>
- 
+
 </section>
- 
+
 <!-- =================== ATELIER =================== -->
 <section class="page" id="page-atelier">
- 
+
   <div class="atelier-hero">
-    <img src="images/stitching-hands.jpg" alt="Hands working the stitch line on a piece of leather"/>
+    <img src="images/lasting-upper.jpg" alt="A leather upper being lasted by hand over a wooden last, held with hundreds of small tacks"/>
     <div class="ah-content">
       <div class="eyebrow">The atelier</div>
       <h1>A scholar's <em>bench.</em></h1>
     </div>
   </div>
- 
+
   <p class="lede" style="max-width:68ch; margin-bottom:60px;">
     Between lectures on the economics of climate change, I sit at a stitching pony in a small workshop in Reading and make things the old way. The two pursuits are closer than they look.
   </p>
- 
+
   <div class="atelier-body">
     <div class="atelier-text">
       <p>The bench is set up in the corner of a study otherwise occupied by papers on agricultural policy and climate finance. It holds a French stitching clam, a half-round knife, three awls of decreasing diameter, and a pot of hand-made pine tar wax. The tools are not accidental: each one was made for a purpose and has remained useful, unchanged, for several centuries.</p>
- 
+
       <p>Leatherwork came into the study quietly. An old pair of welted shoes needed resoling and no one nearby would do it without gluing the sole on. The only way to have them repaired properly, it turned out, was to learn how. One repair led to another, and in time the benches for research and for craft became the same bench.</p>
- 
+
       <p>What began as a practical exercise has become something closer to a long-running argument — with the disposable, with the glued, with the opaque supply chain. The academic literature on durability, repair culture and the true cost of fast goods turns out to map almost exactly onto a workbench: a saddle-stitched seam will not come undone when one thread breaks; a pegged heel can be rebuilt without destroying the upper.</p>
- 
+
       <p>Every piece that leaves the workshop is made on the assumption that it will be repaired, perhaps more than once, and that the person who makes the next repair may not be me. Everything is designed to be taken apart.</p>
     </div>
- 
+
     <div class="atelier-visual">
       <div class="img-frame stitched">
-        <img src="images/shoe-stitching.jpg" alt="Thread and needle against the side of a shoe at the welt seam" loading="lazy"/>
-        <div class="img-caption"><span>Welt thread</span><span>in progress</span></div>
+        <img src="images/boar-bristles.jpg" alt="Boar bristles, hand-waxed thread and the stub of pine-tar wax used in traditional saddle stitching" loading="lazy"/>
+        <div class="img-caption"><span>Boar bristle</span><span>and pine-tar wax</span></div>
       </div>
       <div class="img-frame stitched">
-        <img src="images/wallet-interior.jpg" alt="Hand-stitched interior of a leather wallet" loading="lazy"/>
-        <div class="img-caption"><span>Wallet interior</span><span>hand-lined</span></div>
+        <img src="images/wooden-lasts.jpg" alt="A pair of half-finished wooden boot lasts on a workbench, marked with red guide lines" loading="lazy"/>
+        <div class="img-caption"><span>Wooden lasts</span><span>in the rough</span></div>
       </div>
     </div>
   </div>
- 
+
   <div class="pull-quote">
     <p>"Once you have the bristles right, it's a doddle."</p>
     <div class="cite">— From a note on boar-bristle sewing</div>
   </div>
- 
+
   <div class="eyebrow">Twin pursuits</div>
   <div class="twin-pursuits">
     <div class="pursuit">
@@ -1174,9 +1555,9 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </ul>
     </div>
   </div>
- 
+
 </section>
- 
+
 <!-- =================== COLLECTION =================== -->
 <section class="page" id="page-collection">
   <div class="page-header">
@@ -1188,22 +1569,73 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <p class="subtitle">A small rotating catalogue of finished work. Each piece is one-of-a-kind; many can be commissioned again in a variant of your choosing.</p>
     </div>
   </div>
- 
+
   <div class="filter-bar" id="filterBar">
     <button class="active" data-filter="all">All</button>
-    <button data-filter="wallet">Wallets &amp; Billfolds</button>
+    <button data-filter="wallet">Wallets &amp; Small Goods</button>
     <button data-filter="footwear">Footwear &amp; Repair</button>
+    <button data-filter="harness">Belts &amp; Harness</button>
     <button data-filter="accessory">Accessories</button>
   </div>
- 
+
   <div class="collection-grid" id="collectionGrid">
     <!-- pieces injected by JS -->
   </div>
 </section>
- 
+
+<!-- =================== DETAIL PAGE =================== -->
+<section class="page" id="page-detail">
+  <button class="detail-back" onclick="navigate('collection')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Back to the collection
+  </button>
+
+  <div class="detail-grid">
+    <div class="detail-image" id="detailImageWrap">
+      <!-- main image injected by JS -->
+    </div>
+    <div class="detail-content">
+      <div class="detail-meta-top" id="detailMetaTop"></div>
+      <h1 id="detailTitle"></h1>
+      <p class="detail-subtitle" id="detailSubtitle"></p>
+      <p class="detail-description" id="detailDescription"></p>
+
+      <div class="detail-headline" id="detailHeadline">
+        <!-- price + lead time injected here -->
+      </div>
+
+      <div class="detail-dim">
+        <h3>Dimensions</h3>
+        <p id="detailDimensions"></p>
+      </div>
+
+      <div class="detail-specs">
+        <h3>Materials &amp; specification</h3>
+        <ul id="detailMaterials"></ul>
+      </div>
+
+      <div class="detail-care" id="detailCareBlock">
+        <h3>Care &amp; repair</h3>
+        <p id="detailCare"></p>
+      </div>
+
+      <div class="detail-cta">
+        <button class="primary" id="detailInquireBtn">Inquire about commissioning</button>
+        <button class="secondary" onclick="navigate('craft')">Read the process</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-related">
+    <div class="eyebrow">You may also like</div>
+    <h2 style="max-width:18ch;">Related pieces from the workshop.</h2>
+    <div class="detail-related-grid" id="detailRelated"></div>
+  </div>
+</section>
+
 <!-- =================== JOURNAL =================== -->
 <section class="page" id="page-journal">
- 
+
   <div class="page-header" id="journalHeader">
     <div>
       <div class="eyebrow">The journal</div>
@@ -1213,11 +1645,11 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <p class="subtitle">Occasional writing on technique, repair and the slow economics of making things that last. Search the archive above.</p>
     </div>
   </div>
- 
+
   <div id="journalList" class="journal-layout">
     <!-- articles injected by JS -->
   </div>
- 
+
   <div id="articleFullView" class="article-full-view">
     <button class="back-btn" onclick="closeArticle()">← Return to the archive</button>
     <div class="afv-hero" id="afvHero">
@@ -1232,12 +1664,12 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
     </article>
   </div>
 </section>
- 
+
 <!-- =================== CRAFT =================== -->
 <section class="page" id="page-craft">
- 
+
   <div class="craft-hero">
-    <img src="images/shoes-pair.jpg" alt="A finished pair of polished brown Oxford shoes"/>
+    <img src="images/wingtip-chelsea.jpg" alt="A pair of finished walnut wingtip Chelsea boots resting on tissue paper"/>
     <div class="ch-content">
       <div>
         <div class="eyebrow">Craft</div>
@@ -1245,11 +1677,11 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </div>
     </div>
   </div>
- 
+
   <p class="lede" style="max-width:62ch; margin-bottom:60px;">
     A short list of services, each accepted in small batches. Most commissions take four to eight weeks from first conversation to despatch.
   </p>
- 
+
   <div class="craft-grid">
     <div class="service">
       <div class="s-no">I.</div>
@@ -1270,19 +1702,43 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <div class="price">From £60 · 2–3 weeks</div>
     </div>
   </div>
- 
+
   <div class="process">
     <div class="eyebrow">The process</div>
     <h2 style="max-width:22ch;">Every piece follows the same four slow steps.</h2>
     <div class="process-steps">
-      <div class="step"><h3>Conversation</h3><p>A short exchange about the purpose, the hand that will carry it, and any constraints of material or colour.</p></div>
-      <div class="step"><h3>Drafting</h3><p>A paper pattern is made and corrected. For footwear repair, the existing welt is examined and photographed.</p></div>
-      <div class="step"><h3>Bench work</h3><p>Cutting, skiving, edge finishing, stitching. No power tools other than a leather skiver; everything else by hand.</p></div>
-      <div class="step"><h3>Finish &amp; send</h3><p>Edges burnished, stitching waxed, the piece conditioned and wrapped in tissue with a note of how to keep it.</p></div>
+      <div class="step">
+        <div class="img-frame" style="aspect-ratio:1/1; margin-bottom:20px;">
+          <img src="images/belt-flower.jpg" alt="A finished brown belt with floral inlay laid out next to its paper pattern" loading="lazy"/>
+          <div class="img-caption"><span>Conversation</span><span>—</span></div>
+        </div>
+        <h3>Conversation</h3><p>A short exchange about the purpose, the hand that will carry it, and any constraints of material or colour.</p>
+      </div>
+      <div class="step">
+        <div class="img-frame" style="aspect-ratio:1/1; margin-bottom:20px;">
+          <img src="images/wooden-lasts.jpg" alt="A pair of half-finished wooden boot lasts on a workbench, marked with red guide lines" loading="lazy"/>
+          <div class="img-caption"><span>Drafting</span><span>—</span></div>
+        </div>
+        <h3>Drafting</h3><p>A paper pattern is made and corrected. For footwear, a wooden last is shaped to the customer's foot before any leather is cut.</p>
+      </div>
+      <div class="step">
+        <div class="img-frame" style="aspect-ratio:1/1; margin-bottom:20px;">
+          <img src="images/lasting-upper.jpg" alt="A leather upper being lasted by hand over a wooden last with hundreds of small tacks" loading="lazy"/>
+          <div class="img-caption"><span>Bench work</span><span>—</span></div>
+        </div>
+        <h3>Bench work</h3><p>Cutting, skiving, edge finishing, stitching. No power tools other than a leather skiver; everything else by hand.</p>
+      </div>
+      <div class="step">
+        <div class="img-frame" style="aspect-ratio:1/1; margin-bottom:20px;">
+          <img src="images/heel-iron.jpg" alt="A heel iron pressed against the side of a finished black welted boot" loading="lazy"/>
+          <div class="img-caption"><span>Finishing</span><span>—</span></div>
+        </div>
+        <h3>Finish &amp; send</h3><p>Edges burnished, stitching waxed, the piece conditioned and wrapped in tissue with a note of how to keep it.</p>
+      </div>
     </div>
   </div>
 </section>
- 
+
 <!-- =================== CONTACT =================== -->
 <section class="page" id="page-contact">
   <div class="page-header">
@@ -1294,12 +1750,12 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <p class="subtitle">The workshop answers letters on Thursdays. For commissions, a short description of what you'd like is usually enough to start a conversation.</p>
     </div>
   </div>
- 
+
   <div class="contact-layout">
     <div class="contact-info">
       <div class="img-frame contact-visual stitched">
-        <img src="images/birkenstocks.jpg" alt="Restored leather Birkenstock sandals resting on a marbled surface" loading="lazy"/>
-        <div class="img-caption"><span>Recent refurbishment</span><span>—</span></div>
+        <img src="images/wingtip-chelsea-soles.jpg" alt="The undersides of a pair of finished wingtip Chelsea boots showing the leather sole and pegged heel" loading="lazy"/>
+        <div class="img-caption"><span>Recently finished</span><span>—</span></div>
       </div>
       <dl>
         <div><dt>Workshop</dt><dd>Reading, Berkshire<br/>By appointment only</dd></div>
@@ -1309,7 +1765,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
         <div><dt>Social</dt><dd><a href="#">Instagram</a> · <a href="#">Facebook</a></dd></div>
       </dl>
     </div>
- 
+
     <div class="contact-form">
       <label for="f-name">Your name</label>
       <input id="f-name" type="text" placeholder="How shall we address you?"/>
@@ -1328,9 +1784,9 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
     </div>
   </div>
 </section>
- 
+
 </main>
- 
+
 <!-- =================== FOOTER =================== -->
 <footer class="site">
   <div class="foot-brand">
@@ -1366,7 +1822,23 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
     <span>Site set in Fraunces &amp; Newsreader</span>
   </div>
 </footer>
- 
+
+<!-- =================== LIGHTBOX =================== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(event,-1)" aria-label="Previous">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt=""/>
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(event,1)" aria-label="Next">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
 <!-- =================== SETTINGS PANEL =================== -->
 <div class="settings-panel" id="settingsPanel">
   <div class="settings-header">
@@ -1375,7 +1847,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
- 
+
   <div class="settings-group">
     <h4>Theme</h4>
     <div class="option-group">
@@ -1390,7 +1862,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       </button>
     </div>
   </div>
- 
+
   <div class="settings-group">
     <h4>Layout</h4>
     <div class="option-group">
@@ -1399,7 +1871,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <button class="option-btn" data-layout="gallery" onclick="setLayout('gallery')">Gallery</button>
     </div>
   </div>
- 
+
   <div class="settings-group">
     <h4>Typography</h4>
     <div class="option-group" style="grid-template-columns:1fr 1fr;">
@@ -1407,7 +1879,7 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <button class="option-btn" data-type="sans" onclick="setType('sans')">Sans-serif</button>
     </div>
   </div>
- 
+
   <div class="settings-group">
     <h4>Grain texture</h4>
     <div class="option-group" style="grid-template-columns:1fr 1fr;">
@@ -1415,12 +1887,12 @@ body.type-sans h1, body.type-sans h2, body.type-sans h3{ letter-spacing: -0.03em
       <button class="option-btn" data-grain="off" onclick="setGrain('off')">Clean</button>
     </div>
   </div>
- 
+
   <div style="margin-top:40px; padding-top:20px; border-top:1px solid var(--rule); font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute);">
     Preferences apply to this session.
   </div>
 </div>
- 
+
 <!-- =================== CONTENT + JS =================== -->
 <script>
 /* ---------- Articles ---------- */
@@ -1432,53 +1904,428 @@ const articles = [
     title: 'On a quiet repair: only the welt thread',
     excerpt: 'Quite pleased with this repair as materials were minimal — just the welt thread had rotted, and only thread has been replaced. The old welt and sole are reused.',
     body: `Quite pleased with this repair as materials were minimal — just the welt thread had rotted, and only thread has been replaced, the old welt and sole being reused.
- 
+
 The new sole stitching looks new, however, so it needed dye, wax and polish applying to match the other one. That kind of colour-matching is usually the fussiest stage of any repair: the new thread wants to shout, and everything around it has had a decade or more to soften into its own tone. You build the colour up in thin coats and rub it back until the fresh stitches no longer catch the eye.
- 
+
 Finishing is difficult with a topy because of the bottom edge. I use a heel iron, which only has a lip at the top, and work the edge slowly rather than trying to press the iron flat against a profile it was never shaped for.
- 
+
 The reward of a repair like this is that almost nothing has been thrown away. One spool of waxed linen, a small tin of dye, and a pair of shoes good for another few years.`
   },
   {
     id: 'a2', number: 'Nº 001', date: 'Earlier',
-    image: 'images/stitching-hands.jpg',
+    image: 'images/boar-bristles.jpg',
     tags: ['Technique','Traditional sewing','Boar bristle'],
     title: 'Sewing with boar bristles',
     excerpt: 'The bristle is split down the middle to just over an inch from the tip, then the end filament of the tapered, sticky-waxed thread is clamped in the middle…',
     body: `Sewing with boar bristles. The bristle is split down the middle to just over an inch from the tip, then the end filament of the tapered, sticky-waxed thread is clamped in the middle, four inches of taper are rolled on and locked in place.
- 
+
 In use, the bristles are "twitched" through the hole simultaneously, one atop the other, the same way each time to get regular stitches. The wax is made yourself with obscure ingredients like pine tar.
- 
+
 Why go through all this bother? Tradition aside, once you have them right it's a doddle. With harness needles you have to put them through one at a time, with a hole big enough for the eye of the needle and two thicknesses of thread. The bristle lets you use a smaller awl, which is gentler on the leather and produces a neater stitch that closes up over time.
- 
+
 The pine tar wax is the other half of the craft. It grips the thread against itself, seals the stitch against moisture, and gives that unmistakable workshop smell you only get from a pot that has been used for years.`
   },
   {
-    id: 'a3', number: 'Nº 003', date: 'Coming soon',
-    image: 'images/shoe-stitching.jpg',
+    id: 'a3', number: 'Nº 003', date: 'Last month',
+    image: 'images/waxes-materials.jpg',
+    tags: ['Materials','Pine tar','Wax-making'],
+    title: 'A pot of wax, made from obscure ingredients',
+    excerpt: 'Linen thread, two balls of finished wax, a brick of beeswax, and a bag of pine resin. The wax is what holds a saddle stitch together — and it cannot be bought, not really.',
+    body: `There is a small pot on the bench, blackened from years of warming. It holds the wax that every stitch in this workshop is pulled through, and it is the one ingredient that cannot really be bought ready-made.
+
+The recipe is straightforward: pine resin, beeswax, and a little tallow, melted together over a low heat in roughly equal parts. The pine resin gives it grip — without it, the thread slides through the leather and refuses to lock against itself. The beeswax gives it body and a certain forgiveness, so the thread does not snap when the awl pushes through. The tallow keeps it soft enough to work in winter, when the bench gets cold and the wax wants to shatter.
+
+You roll the finished mixture into balls while it is still warm, and they keep almost indefinitely. To use, you draw the linen thread across the ball a few times until it is thoroughly coated, then run it through your fingers to warm it and press the wax into the fibres. A properly waxed thread is dark, slightly tacky, and absolutely silent when it pulls through the hole.
+
+The point of going to this much trouble is that a stitch sealed in pine-tar wax does not come undone. Even if a single thread is cut, the wax holds the broken ends in place against their neighbours, and the seam stays intact long enough for someone to put it right.`
+  },
+  {
+    id: 'a4', number: 'Nº 004', date: 'Coming soon',
+    image: 'images/wooden-lasts.jpg',
     tags: ['Draft','Economics of repair'],
     title: 'Why repair is also economics',
     excerpt: 'A short essay connecting the durability literature in environmental economics to what actually happens at a resoling bench — draft in progress.',
     body: `This piece is still being drafted. It will appear here shortly.
- 
+
 In the meantime, please consider this a placeholder for a longer note on the economic case for repair — one that treats saddle stitching, welt construction and hand-waxed thread not as nostalgia, but as reasonable engineering choices under a proper accounting of durability, embodied carbon and the true cost of the disposable.`
   }
 ];
- 
+
 /* ---------- Collection pieces ---------- */
 const pieces = [
-  { id:'p1', title:'The Inlay Card Wallet',       kind:'wallet',    spec:'Tan leather · hand-stitched inlay', size:'l', image:'images/wallet-palestine.jpg' },
-  { id:'p2', title:'The Berkshire Bifold',        kind:'wallet',    spec:'Two-tone oak-bark · 8 spi',         size:'m', image:'images/wallet-closed.jpg' },
-  { id:'p3', title:'The Reading Billfold',        kind:'wallet',    spec:'Full-height note pocket',           size:'s', image:'images/wallet-cash.jpg' },
-  { id:'p4', title:'Bifold, opened',              kind:'wallet',    spec:'Symmetrical card slots',            size:'s', image:'images/wallet-open.jpg' },
-  { id:'p5', title:'Interior detail',             kind:'wallet',    spec:'Hand-lined lining',                 size:'m', image:'images/wallet-interior.jpg' },
-  { id:'p6', title:'Oxford resole, Nº 042',       kind:'footwear',  spec:'Welt reused · new thread',          size:'l', image:'images/shoe-repair.jpg' },
-  { id:'p7', title:'Welted oxfords, finished',    kind:'footwear',  spec:'Dye, wax &amp; polish',             size:'m', image:'images/shoes-pair.jpg' },
-  { id:'p8', title:'Welt thread, in hand',        kind:'footwear',  spec:'8 spi, hand-waxed linen',           size:'s', image:'images/shoe-stitching.jpg' },
-  { id:'p9', title:'Birkenstock strap refurb',    kind:'accessory', spec:'Oak-tan replacement straps',        size:'s', image:'images/birkenstocks.jpg' },
-  { id:'p10',title:'Boar-bristle sewing',         kind:'accessory', spec:'Technique study',                   size:'m', image:'images/stitching-hands.jpg' }
+  // ============ WALLETS & SMALL GOODS ============
+  {
+    id:'p01', title:'The Inlay Card Wallet', subtitle:'Tan oak-bark, with hand-stitched flag inlay',
+    kind:'wallet', spec:'Tan oak-bark · stitched inlay', size:'l',
+    image:'images/pal-wallet-wood.jpg',
+    gallery:['images/pal-wallet-wood.jpg','images/pal-wallet-open.jpg','images/wallet-palestine.jpg'],
+    description:'A compact bifold built around a single stitched inlay panel — in this example, the colours of the Palestinian flag, but the design accepts any small motif within a roughly 35 × 22 mm window. The outer hide is oak-bark tanned and turned at the edges; the inlay panels are hand-cut from vegetable-tanned kid in four contrasting colours and saddle-stitched in cream linen. Closed it sits flat in a back pocket; open it shows three card slots a side and a centre note pocket.',
+    making:'The inlay is the slow part. Each colour panel is skived to half a millimetre, set into a recess in the outer hide, and stitched twice — once around its own perimeter, once around the window — so that nothing can lift even after years of wear. The triangular red panel is set last, as the keystone.',
+    materials:['Oak-bark tanned cowhide, 1.4 mm','Vegetable-tanned kid for inlay panels, 0.5 mm','Hand-waxed linen thread, 18/3','Edges burnished with beeswax and water'],
+    dimensions:'110 × 90 mm closed · 6 card slots · 1 note pocket',
+    leadTime:'4–6 weeks', priceFrom:'£185',
+    care:'Wipe with a soft dry cloth; condition once a year with a small amount of neutral leather cream. The tan will deepen to a darker honey over the first eighteen months of use.',
+    related:['p02','p09','p10']
+  },
+  {
+    id:'p02', title:'The Berkshire Bifold', subtitle:'Two-tone oak-bark, eight stitches per inch',
+    kind:'wallet', spec:'Two-tone oak-bark · 8 spi', size:'m',
+    image:'images/wallet-closed.jpg',
+    gallery:['images/wallet-closed.jpg','images/wallet-open.jpg','images/wallet-interior.jpg','images/wallet-cash.jpg'],
+    description:'A traditional bifold in two complementary tones of oak-bark leather — chestnut on the outside, a deeper walnut for the lining and centre. Six card slots, a full-height note pocket and a single-piece interior, all saddle-stitched at eight stitches per inch. Designed to flatten with use rather than swell.',
+    making:'The two hides are matched at the tannery before cutting; each one comes from the same back, so that the colour shift across the closed wallet is consistent. Inside, the centre divider is one piece, not three glued together — which makes the wallet noticeably thinner than most.',
+    materials:['Oak-bark tanned cowhide, 1.2 mm (outer)','Oak-bark tanned cowhide, 0.9 mm (lining)','Hand-waxed linen thread, 18/3','Burnished edges, no edge paint'],
+    dimensions:'112 × 95 mm closed · 6 card slots · note pocket',
+    leadTime:'4–6 weeks', priceFrom:'£165',
+    care:'Avoid direct heat. Condition once a year. The two tones will move closer together over time as the lighter side ages.',
+    related:['p01','p03','p24']
+  },
+  {
+    id:'p03', title:'The Reading Billfold', subtitle:'Full-height note pocket, lined interior',
+    kind:'wallet', spec:'Full-height note pocket', size:'s',
+    image:'images/wallet-cash.jpg',
+    gallery:['images/wallet-cash.jpg','images/bifold-open-detail.jpg','images/wallet-interior.jpg'],
+    description:'A slimmer bifold designed around a full-height note pocket that holds a Bank of England note flat without folding it lengthwise. Four card slots, a sleeve behind, and a hand-burnished edge that sits softly against denim.',
+    making:'The note pocket is cut from a single panel and stitched only on three sides; the open top is the full height of the wallet, so notes drop in cleanly without needing to be folded twice.',
+    materials:['Vegetable-tanned cowhide, 1.2 mm','Hand-waxed linen thread, 18/3','Cream stitching, dark edges'],
+    dimensions:'115 × 90 mm closed · 4 card slots · 1 sleeve · 1 full-height note pocket',
+    leadTime:'4–5 weeks', priceFrom:'£155',
+    care:'Wipe clean with a soft dry cloth. The interior tan will darken faster than the exterior, which is normal.',
+    related:['p02','p06','p08']
+  },
+  {
+    id:'p06', title:'The Pocket Card Sleeve', subtitle:'One-piece chestnut, saddle-stitched',
+    kind:'wallet', spec:'One-piece chestnut · saddle-stitched', size:'m',
+    image:'images/card-sleeve-cash.jpg',
+    gallery:['images/card-sleeve-cash.jpg','images/card-sleeve-tools.jpg','images/card-sleeve-interior.jpg'],
+    description:'The simplest piece in the collection: a single folded panel of chestnut leather, stitched up two sides, with a curved scoop at the opening so a card can be lifted out cleanly with one finger. Holds three to five cards and a folded note.',
+    making:'Cut from a single rectangle, skived along the fold so it bends without bulking, and stitched in two passes from the outside. The opening curve is cut by hand against a wooden form to keep both sides identical.',
+    materials:['Chestnut vegetable-tanned cowhide, 1.4 mm','Hand-waxed linen thread, 18/3','Burnished edges'],
+    dimensions:'105 × 70 mm · 3–5 cards plus a folded note',
+    leadTime:'2–3 weeks', priceFrom:'£75',
+    care:'Carry it. The leather will mould to a slight curve in the first week and stay that way.',
+    related:['p07','p03','p25']
+  },
+  {
+    id:'p07', title:'Card Sleeve, in progress', subtitle:'Pricked and ready to stitch',
+    kind:'wallet', spec:'Pricked &amp; ready to stitch', size:'s',
+    image:'images/card-sleeve-tools.jpg',
+    gallery:['images/card-sleeve-tools.jpg','images/card-sleeve-interior.jpg','images/card-sleeve-cash.jpg'],
+    description:'A study image rather than a finished piece — the same Pocket Card Sleeve, photographed with the awl and thread that will join its two halves. Useful for understanding what a saddle-stitched seam looks like before it is made.',
+    making:'The pricking iron sets the stitch holes evenly along the seam. From this point, both halves are stitched simultaneously, with one needle entering from each side, locking each pass against itself.',
+    materials:['Vegetable-tanned cowhide ready for stitching','Pricking iron','Hand-waxed black linen thread'],
+    dimensions:'Process study · not for sale',
+    leadTime:'—', priceFrom:'—',
+    care:'—',
+    related:['p06','p10','p27']
+  },
+  {
+    id:'p08', title:'The Open-Skeleton Bifold', subtitle:'Vegetable-tan flesh side, cream linen',
+    kind:'wallet', spec:'Vegetable-tan · cream linen', size:'l',
+    image:'images/wallet-interior-flat.jpg',
+    gallery:['images/wallet-interior-flat.jpg','images/bifold-open-detail.jpg','images/wallet-open.jpg'],
+    description:'A study of the bifold construction with the lining left out: two outer panels stitched to a centre spine of raw flesh-side leather. It is shown here for the people who like to see how a piece is built before they choose one finished. The same skeleton sits inside every Berkshire Bifold.',
+    making:'The two leaves and the centre spine are stitched independently, then joined along the spine in a single curving seam. The flesh side is brushed but not coated, which is why it looks softer than the smooth grain side.',
+    materials:['Vegetable-tanned cowhide, 1.2 mm','Hand-waxed linen thread, cream'],
+    dimensions:'Reference piece · not for sale',
+    leadTime:'—', priceFrom:'—',
+    care:'—',
+    related:['p02','p03','p05']
+  },
+  {
+    id:'p09', title:'Heart Inlay, oxblood', subtitle:'Brown calfskin with red kid inlay',
+    kind:'wallet', spec:'Brown calf · red kid inlay', size:'s',
+    image:'images/heart-inlay-red.jpg',
+    gallery:['images/heart-inlay-red.jpg','images/heart-inlay-green.jpg'],
+    description:'A small panel — roughly the size of a credit card — cut from chocolate calfskin, with a red vegetable-tanned kid heart set into a stitched recess. The same construction as the larger Inlay Card Wallet, made to be sewn into a notebook cover, the front of a card sleeve, or the centre of a wallet.',
+    making:'The heart is cut twice — once as the hole, once as the inlay — so the two pieces fit cleanly within the thickness of a single hide. The seam is two parallel rows of red linen, drawing the eye to the centre.',
+    materials:['Chocolate calfskin, 1.2 mm','Red vegetable-tanned kid, 0.6 mm','Red linen thread, 18/3'],
+    dimensions:'85 × 55 mm · ready to be set into another piece',
+    leadTime:'2–3 weeks', priceFrom:'£60',
+    care:'Treat as you would the host piece. The red will hold its colour better than most kidskin since it is hand-dyed in small batches.',
+    related:['p10','p01','p25']
+  },
+  {
+    id:'p10', title:'Heart Inlay, sage', subtitle:'Tan oak-bark with green kid inlay',
+    kind:'wallet', spec:'Tan oak-bark · green kid inlay', size:'s',
+    image:'images/heart-inlay-green.jpg',
+    gallery:['images/heart-inlay-green.jpg','images/heart-inlay-red.jpg'],
+    description:'The companion to the oxblood version — same dimensions, same construction, in tan with a sage-green kid inlay. The stitching follows the heart\'s outline plus a soft stem detail at the base.',
+    making:'The stem is added freehand at the end, with a single line of stitching that draws a small leaf curl. Each one is slightly different.',
+    materials:['Tan oak-bark cowhide, 1.2 mm','Sage-green vegetable-tanned kid, 0.6 mm','Olive linen thread, 18/3'],
+    dimensions:'85 × 55 mm · ready to be set into another piece',
+    leadTime:'2–3 weeks', priceFrom:'£60',
+    care:'Treat as you would the host piece.',
+    related:['p09','p01','p25']
+  },
+  {
+    id:'p25', title:'The Long Bifold, riveted', subtitle:'Black bridle with solid brass studs',
+    kind:'wallet', spec:'Black bridle · solid brass · stud-closure', size:'l',
+    image:'images/long-bifold-black.jpg',
+    gallery:['images/long-bifold-black.jpg'],
+    description:'A long-format wallet for those who prefer to keep notes flat. Black bridle leather, with a stud-fastened cover flap and four solid brass rivets at the corners. Inside, three card slots a side and a full-length note pocket. Stitched in oxblood linen for a small note of contrast.',
+    making:'The corner rivets are functional, not decorative — each one passes through three layers of leather and locks the front and back panels together at the points where pocket use puts the most strain. The closure stud is a saddler\'s spot, not a press-stud, so it will not loosen with age.',
+    materials:['Black bridle cowhide, 1.6 mm','Solid brass saddler\'s spot and rivets','Hand-waxed linen thread, oxblood, 18/3'],
+    dimensions:'195 × 100 mm closed · 6 card slots · full-length note pocket',
+    leadTime:'5–7 weeks', priceFrom:'£285',
+    care:'Wipe with a dry cloth. The brass will tarnish slightly over time, which can be polished back if you prefer it bright.',
+    related:['p02','p21','p18']
+  },
+
+  // ============ FOOTWEAR & REPAIR ============
+  {
+    id:'p11', title:'Oxford Resole, Nº 042', subtitle:'Welt reused, new sole-stitch in waxed linen',
+    kind:'footwear', spec:'Welt reused · new thread', size:'l',
+    image:'images/shoe-repair.jpg',
+    gallery:['images/shoe-repair.jpg','images/shoes-pair.jpg','images/shoe-stitching.jpg','images/sole-construction.jpg'],
+    description:'A complete welt-thread replacement on a pair of welted oxfords whose old sole was sound but whose stitching had rotted. The original welt was kept, the heel was rebuilt, and the new sole-stitch was finished with dye and wax to match the rest of the shoe.',
+    making:'After the old thread was picked out, the welt was checked for splits and re-tacked where needed. The new sole-stitch was put in by hand at eight stitches per inch with hand-waxed linen, then dyed back with several thin coats of leather dye until the new thread no longer caught the eye.',
+    materials:['Reused leather welt and outer sole','Hand-waxed linen sole thread, 25/4','Iron-tanned leather heel build','Beeswax + carnauba edge finish'],
+    dimensions:'Repair only · per pair',
+    leadTime:'3–4 weeks', priceFrom:'£95',
+    care:'After collection, wear them in light rain to settle the new stitch. Polish at six weeks with a neutral wax.',
+    related:['p13','p15','p26']
+  },
+  {
+    id:'p12', title:'Welted Oxfords, finished', subtitle:'Repaired pair, dyed and polished',
+    kind:'footwear', spec:'Dye, wax &amp; polish', size:'m',
+    image:'images/shoes-pair.jpg',
+    gallery:['images/shoes-pair.jpg','images/shoe-repair.jpg'],
+    description:'The pair from Nº 042, photographed after finishing. The new stitch has been built up with several coats of dye and worked into the surrounding patina; the toes have been polished with a small amount of carnauba.',
+    making:'Finishing on a repair is half the work. The stitch is built up gradually so it does not look like a cosmetic patch.',
+    materials:['As Nº 042'],
+    dimensions:'Repair only',
+    leadTime:'3–4 weeks', priceFrom:'£95',
+    care:'See Nº 042.',
+    related:['p11','p15','p13']
+  },
+  {
+    id:'p13', title:'Welt Thread, in hand', subtitle:'Hand-waxed linen, 8 stitches per inch',
+    kind:'footwear', spec:'8 spi · hand-waxed linen', size:'s',
+    image:'images/shoe-stitching.jpg',
+    gallery:['images/shoe-stitching.jpg','images/stitching-hands.jpg'],
+    description:'A study image of the welt-stitching itself: the moment a needle is pulled through with a long tail of waxed linen still in hand. Useful for understanding what a hand-welted sole-stitch actually looks like before the sole is closed.',
+    making:'Each stitch is locked against itself with a half-twist of the thread. The wax keeps it in place even before the second pass arrives.',
+    materials:['Hand-waxed linen thread','Pine-tar wax (made in workshop)'],
+    dimensions:'Process study',
+    leadTime:'—', priceFrom:'—',
+    care:'—',
+    related:['p11','p27','p17']
+  },
+  {
+    id:'p14', title:'The Albion Chelsea Boot', subtitle:'Black calf with elastic gusset',
+    kind:'footwear', spec:'Black calf · elastic gusset · Dainite', size:'l',
+    image:'images/chelsea-boot.jpg',
+    gallery:['images/chelsea-boot.jpg','images/brogue-boots.jpg','images/brogue-soles.jpg'],
+    description:'A clean Chelsea boot in black calf, hand-welted, with a Dainite rubber sole for the British weather and a leather pull-tab at the back. The elastic gusset is the genuine cotton-and-rubber kind, sewn into the upper rather than glued.',
+    making:'The upper is lasted by hand over a wooden last and welted before the sole is closed. The interior is fully leather-lined and the heel pad is reinforced with a layer of vegetable-tanned shank to keep the back of the heel firm against the foot.',
+    materials:['Black calf leather','Dainite studded rubber sole','Cotton-and-rubber gusset','Hand-stitched welt'],
+    dimensions:'Made to the customer\'s last · UK 6–13',
+    leadTime:'10–14 weeks', priceFrom:'£1,250',
+    care:'Polish weekly with neutral cream; deep-clean once a year. With proper care, expect to resole at year 4 or 5.',
+    related:['p15','p24','p26']
+  },
+  {
+    id:'p15', title:'Cap-Toe Brogue Boot', subtitle:'Black calf with full brogueing',
+    kind:'footwear', spec:'Full broguing · Dainite sole', size:'m',
+    image:'images/brogue-boots.jpg',
+    gallery:['images/brogue-boots.jpg','images/brogue-soles.jpg','images/chelsea-boot.jpg'],
+    description:'A full-brogue ankle boot in black calf — cap-toe, wing-cap quarter, perforated medallion. Dainite-soled and Goodyear-welted, with a reinforced heel and a fabric loop pull at the back.',
+    making:'All brogueing is punched by hand with a five-pin punch — the medallion takes about ninety strikes, each one against a leather block to keep the punch sharp. The upper is closed before the brogueing is added, since punching after closure is gentler on the lining.',
+    materials:['Black calf leather','Dainite studded rubber sole','Leather lining throughout','Hand-stitched welt, 8 spi'],
+    dimensions:'Made to the customer\'s last · UK 6–13',
+    leadTime:'12–16 weeks', priceFrom:'£1,450',
+    care:'See the Albion Chelsea.',
+    related:['p14','p24','p16']
+  },
+  {
+    id:'p16', title:'Brogue boot, sole study', subtitle:'A look at the underside',
+    kind:'footwear', spec:'Hand-finished waist · Dainite', size:'s',
+    image:'images/brogue-soles.jpg',
+    gallery:['images/brogue-soles.jpg','images/brogue-boots.jpg'],
+    description:'The underside of the Cap-Toe Brogue Boot — Dainite at toe and heel, leather-finished waist between, pegged heel block.',
+    making:'The waist is left in plain leather rather than rubber, because it does not strike the ground in normal walking and looks better with a hand-burnished finish.',
+    materials:['Dainite rubber, leather waist'],
+    dimensions:'Detail view',
+    leadTime:'—', priceFrom:'—',
+    care:'—',
+    related:['p15','p14','p17']
+  },
+  {
+    id:'p17', title:'Skyme Crossover Sandals', subtitle:'Brown bridle with brass ankle buckles',
+    kind:'footwear', spec:'Brown bridle · solid brass', size:'m',
+    image:'images/sandals-skyme.jpg',
+    gallery:['images/sandals-skyme.jpg','images/walker-sandals.jpg','images/birkenstocks.jpg'],
+    description:'A summer counterpart to the welted line — three crossing straps, an ankle buckle, and a stitched leather midsole. Made to be worn with bare feet; the inside of the strap is finished as carefully as the outside, since it will be in constant contact with the skin.',
+    making:'The straps are skived to a soft taper at the ends so they do not bite. The midsole is two layers of vegetable-tanned cowhide stitched together for spring, with a thin rubber outsole pegged on for grip.',
+    materials:['Brown bridle leather','Vegetable-tanned cowhide midsole','Solid brass buckles','Thin rubber outsole'],
+    dimensions:'Made to the customer\'s foot · UK 5–12',
+    leadTime:'6–8 weeks', priceFrom:'£275',
+    care:'Air-dry if wet; condition twice a year. Avoid extended sun on the upper, which will fade the bridle.',
+    related:['p28','p23','p14']
+  },
+  {
+    id:'p24', title:'Wingtip Chelsea, in walnut', subtitle:'Pebble-grain calf with hand-cut wingtip',
+    kind:'footwear', spec:'Walnut pebble-grain · stacked heel', size:'l',
+    image:'images/wingtip-chelsea.jpg',
+    gallery:['images/wingtip-chelsea.jpg','images/wingtip-chelsea-soles.jpg','images/lasts-progress.jpg'],
+    description:'A bolder cousin to the Albion — same Chelsea silhouette, but with a hand-cut wingtip vamp in pebble-grain walnut leather and a stacked leather heel. The shape is intended to read as country boot rather than dress shoe, while keeping the welted construction.',
+    making:'The wingtip is cut from a paper pattern, transferred to the leather and trimmed by hand against a steel rule. The two halves of the upper are joined under the wing, so the seam is invisible from the outside.',
+    materials:['Walnut pebble-grain calf','Stacked leather heel','Hand-stitched welt, 8 spi','Cotton-and-rubber gusset'],
+    dimensions:'Made to the customer\'s last · UK 6–13',
+    leadTime:'12–14 weeks', priceFrom:'£1,350',
+    care:'Polish in light coats; the pebble grain holds wax in its pores, so two thin coats are better than one thick one.',
+    related:['p14','p15','p26']
+  },
+  {
+    id:'p26', title:'Wingtip Chelsea, sole study', subtitle:'Leather sole with hand-pegged heel',
+    kind:'footwear', spec:'Leather waist · pegged heel', size:'s',
+    image:'images/wingtip-chelsea-soles.jpg',
+    gallery:['images/wingtip-chelsea-soles.jpg','images/wingtip-chelsea.jpg'],
+    description:'The Wingtip Chelsea seen from below, after finishing. The heel is built up of pegged leather lifts; the toe carries a thin rubber tap to delay wear at the point that strikes the ground first.',
+    making:'Each lift in the heel is glued and pegged with a small wooden peg through to the next lift, then trimmed and stained as one block.',
+    materials:['Leather lifts, pegged','Rubber toe tap'],
+    dimensions:'Detail view',
+    leadTime:'—', priceFrom:'—',
+    care:'—',
+    related:['p24','p14','p15']
+  },
+  {
+    id:'p28', title:'The Walker Sandals', subtitle:'Two-strap utility, oak-tan footbed',
+    kind:'footwear', spec:'Oak-tan footbed · brass buckles', size:'m',
+    image:'images/walker-sandals.jpg',
+    gallery:['images/walker-sandals.jpg','images/sandals-skyme.jpg','images/birkenstocks.jpg'],
+    description:'A simpler sandal than the Skyme — two parallel straps, an open back, and a deep oak-tan footbed that softens to the foot within a fortnight. Made for long days of walking on rough ground without socks.',
+    making:'The footbed is shaped wet over a wooden form and allowed to set so it carries the weight slightly distributed across the arch. The straps are riveted through the midsole with closed brass spots.',
+    materials:['Black bridle straps','Oak-tan vegetable-tanned footbed','Solid brass buckles and spots','Stitched-on rubber outsole'],
+    dimensions:'Made to the customer\'s foot · UK 5–12',
+    leadTime:'5–7 weeks', priceFrom:'£245',
+    care:'See the Skyme.',
+    related:['p17','p23','p14']
+  },
+
+  // ============ BELTS & HARNESS ============
+  {
+    id:'p18', title:'The Reading Belt, in black', subtitle:'1¼″ bridle, nickel buckle',
+    kind:'harness', spec:'Bridle · nickel · 1¼″', size:'l',
+    image:'images/belt-black.jpg',
+    gallery:['images/belt-black.jpg','images/belt-stitching.jpg','images/belt-tan-buckle.jpg'],
+    description:'The everyday belt of the workshop — black bridle leather, 32 mm wide, with a nickel-plated solid roller buckle and a single keeper. Stitched on both edges in cream linen, dressed with beeswax, and made to the wearer\'s waist measurement plus an extra hole in each direction.',
+    making:'Cut from the back of the hide where the leather is densest, and skived only at the buckle end so the belt does not curl in the loop. The buckle itself is held by Chicago screws so it can be replaced — every component is treated as separately repairable.',
+    materials:['Black bridle leather, 4 mm','Nickel-plated solid roller buckle','Hand-waxed linen thread, cream','Chicago screws (so the buckle is replaceable)'],
+    dimensions:'32 mm wide · made to waist size · 5 holes',
+    leadTime:'2–3 weeks', priceFrom:'£95',
+    care:'Hang it overnight; condition once a year. The buckle can be unscrewed and replaced if you prefer brass later.',
+    related:['p27','p19','p25']
+  },
+  {
+    id:'p19', title:'Wide Belt with floret', subtitle:'Tan bridle, brass, pieced floret',
+    kind:'harness', spec:'Tan bridle · brass · 1½″ · pieced floret', size:'m',
+    image:'images/belt-flower.jpg',
+    gallery:['images/belt-flower.jpg','images/belt-tan-buckle.jpg','images/belt-black.jpg'],
+    description:'A wider belt — 38 mm — in tan bridle leather with a small pieced leather floret riveted at the front. The floret is two layers of leather, one tan and one chestnut, joined with a brass spot in the centre.',
+    making:'The floret is cut freehand from a paper pattern, so each one is slightly different. It is set on the belt before the keeper is sewn, so that the keeper can pass over it and hold it down at the edges.',
+    materials:['Tan bridle leather, 4 mm','Brass roller buckle','Hand-cut leather floret','Brass saddler\'s spot'],
+    dimensions:'38 mm wide · made to waist size',
+    leadTime:'3–4 weeks', priceFrom:'£135',
+    care:'See the Reading Belt.',
+    related:['p27','p18','p20']
+  },
+  {
+    id:'p20', title:'Carrying Harness, natural', subtitle:'Veg-tan with saddle-stitched joins',
+    kind:'harness', spec:'Veg-tan natural · saddle-stitched', size:'s',
+    image:'images/harness-tan.jpg',
+    gallery:['images/harness-tan.jpg','images/dog-lead.jpg'],
+    description:'A small carrying harness for a thermos, an awl-roll or a folded pattern. Two narrow straps joined at three points by saddle stitching, with a long shoulder strap that loops back through a stitched ring at the underside.',
+    making:'The joins are not riveted but stitched in a small block of orange linen, which lets the harness flex without any hard points pressing into whatever it carries.',
+    materials:['Natural vegetable-tanned cowhide, 2 mm','Hand-waxed linen thread, orange'],
+    dimensions:'Adjustable, 80–110 cm shoulder strap',
+    leadTime:'3–4 weeks', priceFrom:'£90',
+    care:'Will darken to a honey colour with use. Keep dry.',
+    related:['p29','p18','p22']
+  },
+  {
+    id:'p27', title:'The Reading Belt, in tan', subtitle:'Tan bridle with solid brass roller',
+    kind:'harness', spec:'Tan bridle · brass · 1¼″', size:'m',
+    image:'images/belt-tan-buckle.jpg',
+    gallery:['images/belt-tan-buckle.jpg','images/belt-stitching.jpg','images/belt-black.jpg'],
+    description:'The tan version of the workshop belt. Same construction as the black, with a solid brass roller buckle and a single keeper. The cream stitching shows more clearly against the lighter leather.',
+    making:'The brass buckle is set with Chicago screws so it can be replaced after years of polishing wear it down — most owners do not bother.',
+    materials:['Tan bridle leather, 4 mm','Solid brass roller buckle','Hand-waxed linen thread, cream'],
+    dimensions:'32 mm wide · made to waist size · 5 holes',
+    leadTime:'2–3 weeks', priceFrom:'£105',
+    care:'Hang it overnight; condition once a year. Tan bridle tans further with sun exposure, which is normal.',
+    related:['p18','p19','p20']
+  },
+  {
+    id:'p29', title:'Bridle Dog Lead', subtitle:'Brown bridle, brass trigger snap',
+    kind:'harness', spec:'Brown bridle · brass · 1.2 m', size:'m',
+    image:'images/dog-lead.jpg',
+    gallery:['images/dog-lead.jpg','images/harness-tan.jpg'],
+    description:'A 1.2-metre lead in brown bridle leather, with a solid brass trigger snap and a folded loop handle that is stitched twice for redundancy. Made for a medium dog; available in heavier weight on request.',
+    making:'The loop is the part that takes the strain. It is folded, stitched in a tight oblong, and re-stitched along the inside to lock the inner layer to the outer. If the outer ever fails, the inner holds.',
+    materials:['Brown bridle leather, 4 mm','Solid brass trigger snap','Hand-waxed linen thread, cream'],
+    dimensions:'1.2 m × 16 mm · loop handle',
+    leadTime:'2–3 weeks', priceFrom:'£75',
+    care:'Hang it overnight after wet walks. Condition once a year.',
+    related:['p20','p27','p22']
+  },
+
+  // ============ ACCESSORIES ============
+  {
+    id:'p21', title:'Sunglasses Case', subtitle:'Brown bridle with contrast red linen',
+    kind:'accessory', spec:'Bridle · contrast linen · saddler\'s spot', size:'m',
+    image:'images/sunglasses-case.jpg',
+    gallery:['images/sunglasses-case.jpg','images/knife-sheath.jpg'],
+    description:'A close-fitting sunglasses case in dark brown bridle, stitched in red linen for visible contrast and closed with a brass saddler\'s spot. Sized for an average pair of acetate frames; bespoke sizes are made on request.',
+    making:'The case is built around a rough cardboard mock-up of the frames, so the curve at the top matches the temple of the user\'s actual glasses. Once stitched, the cardboard is removed and the case retains the shape.',
+    materials:['Brown bridle leather, 1.6 mm','Hand-waxed linen thread, oxblood','Solid brass saddler\'s spot'],
+    dimensions:'160 × 65 mm · sized to your frames',
+    leadTime:'3–4 weeks', priceFrom:'£90',
+    care:'Wipe with a dry cloth. Condition once a year.',
+    related:['p25','p30','p22']
+  },
+  {
+    id:'p22', title:'Wine-Bottle Sleeves', subtitle:'Natural veg-tan, made to size',
+    kind:'accessory', spec:'Natural veg-tan · per-bottle fit', size:'l',
+    image:'images/wine-sleeves.jpg',
+    gallery:['images/wine-sleeves.jpg'],
+    description:'A pair of leather sleeves that hold a wine bottle steady on a rack and accept a small written label at the rim — useful for cellars where bottles are stored on their side and the bottoms are otherwise indistinguishable. Made to fit the customer\'s bottle dimensions exactly.',
+    making:'Each sleeve is a single rectangle of vegetable-tanned hide, soaked, wrapped wet around the bottle, and pinned to dry. Once dry it holds the curve permanently.',
+    materials:['Natural vegetable-tanned cowhide, 1.4 mm','Riveted to fit'],
+    dimensions:'Made to your bottle · sold in pairs',
+    leadTime:'4–5 weeks', priceFrom:'£140 / pair',
+    care:'Will darken to a honey colour over a few years on the rack.',
+    related:['p20','p21','p29']
+  },
+  {
+    id:'p23', title:'Birkenstock strap refurb', subtitle:'Oak-tan replacement straps',
+    kind:'accessory', spec:'Oak-tan replacement straps', size:'s',
+    image:'images/birkenstocks.jpg',
+    gallery:['images/birkenstocks.jpg','images/walker-sandals.jpg'],
+    description:'A repair service rather than a piece — replacement of the leather straps on a pair of Birkenstock sandals when the originals have failed. The cork footbed and cork-rubber outsole are reused; only the straps and any worn buckles are replaced.',
+    making:'The original straps are picked off, the rivets removed and the cork holes inspected. New oak-tan straps are cut to the original pattern and re-riveted with brass.',
+    materials:['Oak-tan bridle straps','Brass replacement rivets'],
+    dimensions:'Repair only · per pair',
+    leadTime:'2–3 weeks', priceFrom:'£60 / pair',
+    care:'Treat them like new sandals — a fortnight to break in.',
+    related:['p17','p28','p11']
+  },
+  {
+    id:'p30', title:'Knife Sheath, hand-stitched', subtitle:'Black bridle for a kitchen blade',
+    kind:'accessory', spec:'Black bridle · single panel · stitched', size:'s',
+    image:'images/knife-sheath.jpg',
+    gallery:['images/knife-sheath.jpg','images/sunglasses-case.jpg'],
+    description:'A simple sheath for a kitchen or workshop knife, built around the actual blade so the fit is exact. Black bridle, single-panel construction with the spine on one side and the open mouth at the top.',
+    making:'The blade is wrapped in greaseproof paper while the sheath is wet-formed around it, so that the leather takes the shape but the steel does not get marked.',
+    materials:['Black bridle leather, 2 mm','Hand-waxed linen thread, cream','Wet-formed to the blade'],
+    dimensions:'Made to your blade',
+    leadTime:'2–3 weeks', priceFrom:'£75',
+    care:'Keep the blade clean and dry inside the sheath; humidity can mark good steel.',
+    related:['p21','p20','p22']
+  }
 ];
- 
+
 /* ---------- Rendering ---------- */
 function renderJournal(list){
   const container = document.getElementById('journalList');
@@ -1509,14 +2356,17 @@ function renderJournal(list){
     </div>
   `).join('');
 }
- 
+
 function renderCollection(filter){
   const grid = document.getElementById('collectionGrid');
   const list = filter==='all' ? pieces : pieces.filter(p=>p.kind===filter);
   grid.innerHTML = list.map(p => `
-    <div class="piece size-${p.size}" onclick="navigate('contact')">
+    <div class="piece size-${p.size}" onclick="openDetail('${p.id}')">
       <div class="img-frame stitched">
         <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+        <button class="zoom-btn" onclick="event.stopPropagation(); openLightboxBySrc('${p.image}')" aria-label="View larger image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+        </button>
         <div class="img-caption"><span>${p.kind}</span><span>${p.id.toUpperCase()}</span></div>
       </div>
       <div class="piece-title">${p.title}</div>
@@ -1527,7 +2377,7 @@ function renderCollection(filter){
     </div>
   `).join('');
 }
- 
+
 /* ---------- Navigation ---------- */
 function navigate(pageId){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -1540,7 +2390,133 @@ function navigate(pageId){
   document.getElementById('journalHeader').style.display='';
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
+/* ---------- Product detail page ---------- */
+function openDetail(id){
+  const p = pieces.find(x => x.id === id);
+  if(!p) return;
+  navigate('detail');
+  // Keep "Collection" highlighted in nav since detail belongs to that section
+  document.querySelectorAll('nav.main button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.page === 'collection');
+  });
+
+  // Hero image
+  const wrap = document.getElementById('detailImageWrap');
+  wrap.innerHTML = `
+    <div class="img-frame stitched">
+      <img src="${p.image}" alt="${p.title}" loading="eager"/>
+      <button class="zoom-btn" onclick="event.stopPropagation(); openLightboxBySrc('${p.image}')" aria-label="View larger image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+      </button>
+      <div class="img-caption"><span>${p.kind}</span><span>${p.id.toUpperCase()}</span></div>
+    </div>`;
+
+  // Meta + title + description
+  document.getElementById('detailMetaTop').innerHTML =
+    `<span class="accent">${p.kind.toUpperCase()}</span><span>${p.id.toUpperCase()}</span>`;
+  document.getElementById('detailTitle').textContent = p.title;
+  document.getElementById('detailSubtitle').textContent = p.subtitle || '';
+  document.getElementById('detailDescription').textContent = p.description || '';
+
+  // Headline: price + lead time
+  const headline = document.getElementById('detailHeadline');
+  const isReference = !p.priceFrom || p.priceFrom === '—';
+  if(isReference){
+    headline.innerHTML = `
+      <div>
+        <div class="label">Status</div>
+        <div class="value"><em>Reference piece</em></div>
+      </div>
+      <div>
+        <div class="label">Available</div>
+        <div class="value">By commission only</div>
+      </div>`;
+  } else {
+    headline.innerHTML = `
+      <div>
+        <div class="label">From</div>
+        <div class="value"><em>${p.priceFrom}</em></div>
+      </div>
+      <div>
+        <div class="label">Lead time</div>
+        <div class="value">${p.leadTime}</div>
+      </div>`;
+  }
+
+  // Dimensions
+  document.getElementById('detailDimensions').textContent = p.dimensions || '—';
+
+  // Materials list
+  const mats = document.getElementById('detailMaterials');
+  mats.innerHTML = (p.materials || []).map(m => `<li>${m}</li>`).join('');
+
+  // Care notes
+  const careBlock = document.getElementById('detailCareBlock');
+  if(!p.care || p.care === '—'){
+    careBlock.style.display = 'none';
+  } else {
+    careBlock.style.display = '';
+    document.getElementById('detailCare').textContent = p.care;
+  }
+
+  // Inquire button
+  const inquireBtn = document.getElementById('detailInquireBtn');
+  if(isReference){
+    inquireBtn.textContent = 'Discuss a similar commission';
+  } else {
+    inquireBtn.textContent = `Inquire about commissioning`;
+  }
+  inquireBtn.onclick = () => prefillCommissionForm(p);
+
+  // Related pieces
+  renderRelated(p);
+
+  // Make sure the new images are indexed for the lightbox
+  buildLightboxIndex();
+}
+
+function renderRelated(piece){
+  const container = document.getElementById('detailRelated');
+  const ids = piece.related || [];
+  const items = ids.map(id => pieces.find(p => p.id === id)).filter(Boolean).slice(0, 3);
+  if(!items.length){ container.innerHTML = ''; return; }
+  container.innerHTML = items.map(p => `
+    <div class="related-piece" onclick="openDetail('${p.id}')">
+      <div class="img-frame stitched">
+        <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+        <div class="img-caption"><span>${p.kind}</span><span>${p.id.toUpperCase()}</span></div>
+      </div>
+      <h4>${p.title}</h4>
+      <div class="related-meta">${p.spec}</div>
+    </div>
+  `).join('');
+}
+
+function prefillCommissionForm(p){
+  navigate('contact');
+  // Set kind dropdown to "A commission"
+  const kind = document.getElementById('f-kind');
+  if(kind){
+    for(const opt of kind.options){
+      if(opt.value === 'A commission' || opt.text === 'A commission'){
+        kind.value = opt.value;
+        break;
+      }
+    }
+  }
+  // Prefill the message with a polite opening that references the piece
+  const msg = document.getElementById('f-msg');
+  if(msg){
+    msg.value = `Hello,\n\nI'm interested in commissioning the ${p.title}${p.subtitle ? ' — '+p.subtitle.toLowerCase() : ''}.\n\nI'd like to ask about: \n\n— [your questions or specifications here]\n\nThank you,`;
+    msg.focus();
+    // Move cursor to the [your questions...] placeholder
+    const placeholder = '[your questions or specifications here]';
+    const idx = msg.value.indexOf(placeholder);
+    if(idx > -1) msg.setSelectionRange(idx, idx + placeholder.length);
+  }
+}
+
 function openArticle(id){
   const a = articles.find(x=>x.id===id);
   if(!a) return;
@@ -1563,7 +2539,7 @@ function closeArticle(){
   document.getElementById('journalHeader').style.display='';
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 /* ---------- Search ---------- */
 const searchIndex = [
   ...articles.map(a => ({kind:'Journal', title:a.title, snippet:a.excerpt, go:()=>openArticle(a.id)})),
@@ -1608,18 +2584,19 @@ document.getElementById('search').addEventListener('blur', ()=>{
   setTimeout(()=>document.getElementById('searchResults').classList.remove('active'), 180);
 });
 document.getElementById('search').addEventListener('focus', e=>{ if(e.target.value) runSearch(e.target.value); });
- 
+
 /* ---------- Filter bar ---------- */
 function setFilter(kind){
   document.querySelectorAll('#filterBar button').forEach(b=>{
     b.classList.toggle('active', b.dataset.filter===kind);
   });
   renderCollection(kind);
+  buildLightboxIndex();
 }
 document.querySelectorAll('#filterBar button').forEach(btn=>{
   btn.addEventListener('click', ()=> setFilter(btn.dataset.filter));
 });
- 
+
 /* ---------- Settings ---------- */
 function toggleSettings(){ document.getElementById('settingsPanel').classList.toggle('open'); }
 function setTheme(name){
@@ -1641,7 +2618,7 @@ function setGrain(state){
   document.body.style.setProperty('--grain', state==='off' ? '0' : '.15');
   document.querySelectorAll('[data-grain]').forEach(b=>b.classList.toggle('active', b.dataset.grain===state));
 }
- 
+
 /* ---------- Contact form (visual only) ---------- */
 function submitForm(e){
   e.preventDefault();
@@ -1659,11 +2636,103 @@ function submitForm(e){
     document.getElementById('f-msg').value='';
   }, 2500);
 }
- 
+
+/* ---------- Lightbox ---------- */
+let lightboxImages = [];
+let lightboxIdx = 0;
+
+function buildLightboxIndex(){
+  // Collect every visible image in the document with its caption
+  const frames = document.querySelectorAll('.img-frame');
+  lightboxImages = [];
+  const seen = new Set();
+  frames.forEach(frame => {
+    const img = frame.querySelector('img');
+    if(!img || !img.src) return;
+    // Deduplicate by src — same image used in multiple places shows once in lightbox
+    if(seen.has(img.src)) {
+      // still attach handlers below
+    } else {
+      const cap = frame.querySelector('.img-caption');
+      let caption = '';
+      if(cap){
+        const spans = cap.querySelectorAll('span');
+        caption = Array.from(spans).map(s=>s.textContent.trim()).filter(t=>t && t!=='—').join(' · ');
+      }
+      if(!caption) caption = img.alt || '';
+      lightboxImages.push({ src: img.src, alt: img.alt, caption });
+      seen.add(img.src);
+    }
+
+    // Add a functional zoom button if the frame doesn't already have one
+    if(!frame.querySelector('.zoom-btn')){
+      const btn = document.createElement('button');
+      btn.className = 'zoom-btn';
+      btn.setAttribute('aria-label', 'View larger image');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightboxBySrc(img.src);
+      });
+      frame.appendChild(btn);
+    }
+
+    // If the frame's parent has its own onclick (tile/piece/article) we don't override clicks on the frame.
+    // Otherwise, click on the frame itself opens the lightbox.
+    const parentHasClick = frame.parentElement && frame.parentElement.getAttribute('onclick');
+    if(!parentHasClick && !frame.dataset.clickBound){
+      frame.dataset.clickBound = '1';
+      frame.style.cursor = 'zoom-in';
+      frame.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        openLightboxBySrc(img.src);
+      });
+    }
+  });
+}
+
+function openLightboxBySrc(src){
+  const idx = lightboxImages.findIndex(x => x.src === src);
+  if(idx === -1) return;
+  lightboxIdx = idx;
+  showLightboxAt(idx);
+}
+
+function showLightboxAt(i){
+  const item = lightboxImages[i];
+  if(!item) return;
+  document.getElementById('lightboxImg').src = item.src;
+  document.getElementById('lightboxImg').alt = item.alt;
+  document.getElementById('lightboxCaption').textContent = item.caption;
+  document.getElementById('lightboxCounter').textContent = (i+1).toString().padStart(2,'0') + ' / ' + lightboxImages.length.toString().padStart(2,'0');
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e){
+  if(e && e.target && e.target.tagName === 'IMG') return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function lightboxNav(e, dir){
+  if(e) e.stopPropagation();
+  lightboxIdx = (lightboxIdx + dir + lightboxImages.length) % lightboxImages.length;
+  showLightboxAt(lightboxIdx);
+}
+
+document.addEventListener('keydown', (e)=>{
+  if(!document.getElementById('lightbox').classList.contains('active')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') lightboxNav(null, -1);
+  if(e.key === 'ArrowRight') lightboxNav(null, 1);
+});
+
 /* ---------- Init ---------- */
 renderJournal(articles);
 renderCollection('all');
- 
+buildLightboxIndex();
+
 document.addEventListener('click', (e)=>{
   const panel = document.getElementById('settingsPanel');
   const gear = document.querySelector('.gear-btn');
